@@ -385,11 +385,13 @@ init() {
 
     destroy() {
 
-        if (!initialized) return;
+    if (!initialized) return;
 
-        initialized = false;
+    stopLoop();
 
-    }
+    initialized = false;
+
+}
 
 };
    
