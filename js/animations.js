@@ -325,13 +325,29 @@ let ticking = false;
 
     function animationFrame() {
 
-        updateFrame();
+    updateFrame();
 
-        requestAnimationFrame(animationFrame);
+    rafId = requestAnimationFrame(animationFrame);
 
-    }
+}
 
-    requestAnimationFrame(animationFrame);
+    function startLoop() {
+
+    if (rafId !== null) return;
+
+    rafId = requestAnimationFrame(animationFrame);
+
+}
+
+   function stopLoop() {
+
+    if (rafId === null) return;
+
+    cancelAnimationFrame(rafId);
+
+    rafId = null;
+
+}
 
     /* ======================================================
        REDUCED MOTION
