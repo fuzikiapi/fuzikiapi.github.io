@@ -662,6 +662,12 @@ blurCtx.setTransform(
 
 window.KF.Background = {
 
+    get initialized() {
+
+        return initialized;
+
+    },
+
     init() {
 
         if (initialized) return;
