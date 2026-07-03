@@ -496,8 +496,8 @@
 
         previousTime = performance.now();
 
-        requestAnimationFrame(frame);
-
+        rafId = requestAnimationFrame(frame);
+       
     }
 
     function stop() {
