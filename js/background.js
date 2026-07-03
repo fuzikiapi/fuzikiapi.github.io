@@ -13,7 +13,7 @@
 
     const CONFIG = {
 
-        pixelRatio: Math.min(window.devicePixelRatio || 2),
+        pixelRatio: Math.min(window.devicePixelRatio || 1, 2),
 
         blobCount: 6,
 
