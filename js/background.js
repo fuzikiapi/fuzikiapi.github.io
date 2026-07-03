@@ -502,9 +502,17 @@
 
     function stop() {
 
-        running = false;
+    running = false;
+
+    if (rafId !== null) {
+
+        cancelAnimationFrame(rafId);
+
+        rafId = null;
 
     }
+
+}
 
     /* ======================================================
        RAF LOOP
