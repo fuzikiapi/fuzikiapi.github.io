@@ -478,7 +478,7 @@
 
         render();
 
-        requestAnimationFrame(frame);
+        rafId = requestAnimationFrame(frame);
 
     }
 
