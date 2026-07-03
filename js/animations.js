@@ -371,27 +371,27 @@ let ticking = false;
 
     },
 
-init() {
+    init() {
 
-    if (initialized) return;
+        if (initialized) return;
 
-    initialized = true;
+        initialized = true;
 
-    applyStagger(revealElements);
+        applyStagger(revealElements);
 
-    startLoop();
+        startLoop();
 
-},
+    },
 
     destroy() {
 
-    if (!initialized) return;
+        if (!initialized) return;
 
-    stopLoop();
+        stopLoop();
 
-    initialized = false;
+        initialized = false;
 
-}
+    }
 
 };
    
