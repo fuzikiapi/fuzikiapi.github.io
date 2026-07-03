@@ -692,11 +692,6 @@ window.KF.Background = {
 
     stop();
 
-    window.removeEventListener(
-        "resize",
-        resize
-    );
-
     initialized = false;
 
 }
