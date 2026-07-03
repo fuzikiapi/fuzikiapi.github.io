@@ -1,335 +1,1467 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+/* ===========================================================
+   AETHER v1.0
+   by ChatGPT + Kadu
+   Parte 1/8
+=========================================================== */
 
-<head>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* ===========================================================
+   RESET
+=========================================================== */
 
-    <title>Kadu Fuziki</title>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    <meta name="description"
-        content="Desenvolvedor, criador de projetos e entusiasta de tecnologia.">
+html{
 
-    <meta name="theme-color" content="#050816">
+    scroll-behavior:smooth;
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Kadu Fuziki">
-    <meta property="og:description"
-        content="Building meaningful digital experiences.">
-    <meta property="og:type" content="website">
+}
 
-    <!-- Fonte -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+body{
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    font-family:"Outfit",sans-serif;
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    background:#050816;
 
-</head>
+    color:#F8FAFC;
 
-<body>
+    overflow-x:hidden;
 
-    <!-- Background -->
+}
 
-    <div class="background">
+/* ===========================================================
+   VARIABLES
+=========================================================== */
 
-        <div class="gradient gradient-1"></div>
+:root{
 
-        <div class="gradient gradient-2"></div>
+    --bg:#050816;
+    --bg2:#0B1224;
 
-        <div class="noise"></div>
+    --surface:rgba(17,24,39,.70);
 
-    </div>
+    --surface-hover:rgba(27,39,64,.92);
 
-    <!-- Header -->
+    --border:rgba(255,255,255,.08);
 
-    <header class="header">
+    --primary:#4F8CFF;
+    --secondary:#7C3AED;
 
-        <div class="logo">
+    --text:#F8FAFC;
+    --muted:#94A3B8;
 
-            AETHER
+    --success:#8CE99A;
 
-        </div>
+    --radius:22px;
 
-        <nav>
+    --transition:.35s;
 
-            <a href="#about">Sobre</a>
+}
 
-            <a href="#projects">Projetos</a>
+/* ===========================================================
+   BASE
+=========================================================== */
 
-            <a href="#social">Social</a>
+img{
 
-            <a href="#contact">Contato</a>
+    display:block;
 
-        </nav>
+    max-width:100%;
 
-    </header>
+}
 
-    <!-- Hero -->
+a{
 
-    <main>
+    color:inherit;
 
-        <section class="hero">
+    text-decoration:none;
 
-            <div class="avatar-wrapper">
+}
 
-                <div class="orbit orbit-1"></div>
-                <div class="orbit orbit-2"></div>
-                <div class="orbit orbit-3"></div>
+section{
 
-                <img
-                    src="assets/images/avatar.png"
-                    alt="Kadu Fuziki"
-                    class="avatar">
+    width:min(1100px,92%);
 
-            </div>
+    margin:auto;
 
-            <span class="badge">
+}
 
-                Disponível para novos projetos
+.section{
 
-            </span>
+    padding:140px 0;
 
-            <h1>
+}
 
-                Kadu Fuziki
+.section-title{
 
-            </h1>
+    font-size:2.5rem;
 
-            <p class="description">
+    font-weight:700;
 
-                Building meaningful digital experiences.
+    margin-bottom:50px;
 
-            </p>
+    letter-spacing:-1px;
 
-            <p class="typing">
+}
 
-                <span id="typing-text"></span>
+/* ===========================================================
+   BACKGROUND
+=========================================================== */
 
-            </p>
+.background{
 
-        </section>
+    position:fixed;
 
-        <!-- ABOUT -->
+    inset:0;
 
-        <section
-            class="section"
-            id="about">
+    overflow:hidden;
 
-            <div class="section-title">
+    z-index:-10;
 
-                Sobre
+}
 
-            </div>
+.gradient{
 
-            <div class="glass">
+    position:absolute;
 
-                <p>
+    width:650px;
 
-                    Olá! Meu nome é Kadu.
+    height:650px;
 
-                    Sou apaixonado por tecnologia, desenvolvimento, design, automação e criação de experiências digitais.
+    border-radius:50%;
 
-                    Atualmente desenvolvo projetos para Discord, GitHub e aplicações web modernas.
+    filter:blur(120px);
 
-                </p>
+    opacity:.25;
 
-            </div>
+}
 
-        </section>
+.gradient-1{
 
-        <!-- PROJECTS -->
+    top:-220px;
 
-        <section
-            class="section"
-            id="projects">
+    left:-220px;
 
-            <div class="section-title">
+    background:#4F8CFF;
 
-                Projetos
+}
 
-            </div>
+.gradient-2{
 
-            <div class="projects-grid">
+    right:-220px;
 
-                <article class="project">
+    bottom:-220px;
 
-                    <h3>
+    background:#7C3AED;
 
-                        AETHER
+}
 
-                    </h3>
+.noise{
 
-                    <p>
+    position:absolute;
 
-                        Minha identidade digital construída do zero.
+    inset:0;
 
-                    </p>
+    opacity:.03;
 
-                </article>
+    background-image:
+    radial-gradient(circle,#ffffff 1px,transparent 1px);
 
-                <article class="project">
+    background-size:24px 24px;
 
-                    <h3>
+}
 
-                        NexHub
+/* ===========================================================
+   HEADER
+=========================================================== */
 
-                    </h3>
+.header{
 
-                    <p>
+    position:fixed;
 
-                        Comunidade gamer para jogadores e desenvolvedores.
+    top:0;
+    left:0;
 
-                    </p>
+    width:100%;
 
-                </article>
+    display:flex;
 
-                <article class="project">
+    justify-content:space-between;
 
-                    <h3>
+    align-items:center;
 
-                        NexCode
+    padding:26px 8%;
 
-                    </h3>
+    backdrop-filter:blur(18px);
 
-                    <p>
+    background:rgba(5,8,22,.45);
 
-                        Bot inteligente para Discord.
+    border-bottom:1px solid rgba(255,255,255,.05);
 
-                    </p>
+    z-index:999;
 
-                </article>
+}
 
-            </div>
+.logo{
 
-        </section>
+    font-size:1.4rem;
 
-        <!-- SOCIAL -->
+    font-weight:700;
 
-        <section
-            class="section"
-            id="social">
+    letter-spacing:4px;
 
-            <div class="section-title">
+    color:var(--text);
 
-                Social
+}
 
-            </div>
+.header nav{
 
-            <div class="cards">
+    display:flex;
 
-                <a href="#" class="card">
+    gap:36px;
 
-                    <div>
+}
 
-                        <h3>Instagram</h3>
+.header nav a{
 
-                        <p>Bastidores e rotina.</p>
+    color:var(--muted);
 
-                    </div>
+    font-size:.95rem;
 
-                    <span>↗</span>
+    transition:var(--transition);
 
-                </a>
+    position:relative;
 
-                <a href="#" class="card">
+}
 
-                    <div>
+.header nav a::after{
 
-                        <h3>GitHub</h3>
+    content:"";
 
-                        <p>Projetos e código.</p>
+    position:absolute;
 
-                    </div>
+    left:0;
+    bottom:-8px;
 
-                    <span>↗</span>
+    width:0;
 
-                </a>
+    height:2px;
 
-                <a href="#" class="card">
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
 
-                    <div>
+    transition:.35s;
 
-                        <h3>Discord</h3>
+}
 
-                        <p>Comunidade.</p>
+.header nav a:hover{
 
-                    </div>
+    color:var(--text);
 
-                    <span>↗</span>
+}
 
-                </a>
+.header nav a:hover::after{
 
-                <a href="#" class="card">
+    width:100%;
 
-                    <div>
+}
 
-                        <h3>Spotify</h3>
+/* ===========================================================
+   HERO
+=========================================================== */
 
-                        <p>Músicas favoritas.</p>
+.hero{
 
-                    </div>
+    min-height:100vh;
 
-                    <span>↗</span>
+    display:flex;
 
-                </a>
+    flex-direction:column;
 
-                <a href="#" class="card">
+    justify-content:center;
 
-                    <div>
+    align-items:center;
 
-                        <h3>Steam</h3>
+    text-align:center;
 
-                        <p>Jogos.</p>
+}
 
-                    </div>
+.avatar-wrapper{
 
-                    <span>↗</span>
+    position:relative;
 
-                </a>
+    width:220px;
 
-            </div>
+    height:220px;
 
-        </section>
+    margin-bottom:40px;
 
-        <!-- CONTACT -->
+}
 
-        <section
-            class="section"
-            id="contact">
+.avatar{
 
-            <div class="section-title">
+    width:220px;
 
-                Contato
+    height:220px;
 
-            </div>
+    border-radius:50%;
 
-            <div class="glass">
+    object-fit:cover;
 
-                <p>
+    position:relative;
 
-                    Em breve uma área de contato integrada.
+    z-index:5;
 
-                </p>
+    border:3px solid rgba(255,255,255,.08);
 
-            </div>
+    box-shadow:
+        0 0 70px rgba(79,140,255,.18),
+        0 0 140px rgba(124,58,237,.08);
 
-        </section>
+}
 
-    </main>
+/* ===========================================================
+   ORBITS
+=========================================================== */
 
-    <footer>
+.orbit{
 
-        © 2026 • Kadu Fuziki
+    position:absolute;
 
-    </footer>
+    border-radius:50%;
 
-    <script src="js/script.js"></script>
+    border:1px solid rgba(255,255,255,.08);
 
-</body>
+}
 
-</html>
+.orbit-1{
+
+    inset:-10px;
+
+    animation:spin 16s linear infinite;
+
+}
+
+.orbit-2{
+
+    inset:-26px;
+
+    animation:spinReverse 24s linear infinite;
+
+}
+
+.orbit-3{
+
+    inset:-42px;
+
+    animation:spin 32s linear infinite;
+
+}
+
+/* ===========================================================
+   HERO TEXT
+=========================================================== */
+
+.badge{
+
+    margin-bottom:30px;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.05);
+
+    color:var(--success);
+
+    font-size:.95rem;
+
+    font-weight:500;
+
+}
+
+.hero h1{
+
+    font-size:clamp(3.8rem,8vw,6rem);
+
+    font-weight:800;
+
+    letter-spacing:-3px;
+
+    margin-bottom:18px;
+
+}
+
+.description{
+
+    max-width:720px;
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:1.2rem;
+
+    margin-bottom:18px;
+
+}
+
+.typing{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    font-size:1.2rem;
+
+    min-height:34px;
+
+}
+
+/* ===========================================================
+   ABOUT
+=========================================================== */
+
+.glass{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    padding:40px;
+
+    transition:var(--transition);
+
+}
+
+.glass:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(79,140,255,.25);
+
+    background:var(--surface-hover);
+
+}
+
+.glass p{
+
+    color:var(--muted);
+
+    font-size:1.05rem;
+
+    line-height:2;
+
+}
+
+/* ===========================================================
+   PROJECTS
+=========================================================== */
+
+.projects-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}
+
+.project{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    padding:30px;
+
+    transition:var(--transition);
+
+    cursor:pointer;
+
+}
+
+.project:hover{
+
+    transform:translateY(-8px);
+
+    background:var(--surface-hover);
+
+    border-color:rgba(79,140,255,.30);
+
+    box-shadow:
+
+        0 15px 40px rgba(0,0,0,.25);
+
+}
+
+.project h3{
+
+    font-size:1.35rem;
+
+    margin-bottom:16px;
+
+}
+
+.project p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+}
+
+/* ===========================================================
+   PROJECT TAG
+=========================================================== */
+
+.project::before{
+
+    content:"PROJETO";
+
+    display:inline-block;
+
+    font-size:.72rem;
+
+    letter-spacing:2px;
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
+}
+
+/* ===========================================================
+   SECTION SPACING
+=========================================================== */
+
+#about{
+
+    padding-top:80px;
+
+}
+
+#projects{
+
+    padding-top:40px;
+
+}
+
+/* ===========================================================
+   SOCIAL
+=========================================================== */
+
+.cards{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    margin-top:20px;
+
+}
+
+/* ===========================================================
+   CARD
+=========================================================== */
+
+.card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:28px 32px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    transition:var(--transition);
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.04),
+        transparent
+    );
+
+    transition:.7s;
+
+}
+
+.card:hover::before{
+
+    left:100%;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    background:var(--surface-hover);
+
+    border-color:rgba(79,140,255,.28);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.30);
+
+}
+
+/* ===========================================================
+   CARD CONTENT
+=========================================================== */
+
+.card h3{
+
+    font-size:1.35rem;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+.card p{
+
+    color:var(--muted);
+
+    line-height:1.7;
+
+}
+
+.card span{
+
+    font-size:1.8rem;
+
+    color:var(--primary);
+
+    transition:.35s;
+
+}
+
+.card:hover span{
+
+    transform:
+        translate(6px,-6px)
+        scale(1.15);
+
+}
+
+/* ===========================================================
+   CONTACT
+=========================================================== */
+
+#contact{
+
+    padding-top:60px;
+
+}
+
+#contact .glass{
+
+    text-align:center;
+
+}
+
+#contact p{
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+}
+
+/* ===========================================================
+   FOOTER
+=========================================================== */
+
+footer{
+
+    width:min(1100px,92%);
+
+    margin:120px auto 60px;
+
+    padding-top:40px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:.95rem;
+
+}
+
+/* ===========================================================
+   SELECTION
+=========================================================== */
+
+::selection{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+::-moz-selection{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ===========================================================
+   SCROLLBAR
+=========================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#050816;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:rgba(255,255,255,.12);
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:rgba(255,255,255,.25);
+
+}
+
+/* ===========================================================
+   ANIMATIONS
+=========================================================== */
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes spinReverse{
+
+    from{
+
+        transform:rotate(360deg);
+
+    }
+
+    to{
+
+        transform:rotate(0deg);
+
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.hero>*{
+
+    animation:fadeUp .8s ease both;
+
+}
+
+.hero>*:nth-child(2){
+
+    animation-delay:.15s;
+
+}
+
+.hero>*:nth-child(3){
+
+    animation-delay:.30s;
+
+}
+
+.hero>*:nth-child(4){
+
+    animation-delay:.45s;
+
+}
+
+.hero>*:nth-child(5){
+
+    animation-delay:.60s;
+
+}
+
+/* ===========================================================
+   GLOW
+=========================================================== */
+
+.project:hover{
+
+    box-shadow:
+
+        0 0 0 1px rgba(79,140,255,.10),
+
+        0 15px 50px rgba(79,140,255,.12),
+
+        0 20px 60px rgba(0,0,0,.30);
+
+}
+
+.card:hover{
+
+    box-shadow:
+
+        0 0 0 1px rgba(79,140,255,.10),
+
+        0 18px 55px rgba(79,140,255,.10),
+
+        0 25px 70px rgba(0,0,0,.35);
+
+}
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+
+@media (max-width:1200px){
+
+    .header{
+
+        padding:24px 6%;
+
+    }
+
+    section{
+
+        width:min(92%,900px);
+
+    }
+
+}
+
+@media (max-width:992px){
+
+    .hero{
+
+        padding-top:140px;
+
+        min-height:auto;
+
+    }
+
+    .hero h1{
+
+        font-size:4rem;
+
+    }
+
+    .section{
+
+        padding:100px 0;
+
+    }
+
+    .projects-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .header{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        padding:18px;
+
+    }
+
+    .header nav{
+
+        gap:18px;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+    .avatar-wrapper{
+
+        width:180px;
+
+        height:180px;
+
+    }
+
+    .avatar{
+
+        width:180px;
+
+        height:180px;
+
+    }
+
+    .hero h1{
+
+        font-size:3rem;
+
+        line-height:1.1;
+
+    }
+
+    .description{
+
+        font-size:1rem;
+
+    }
+
+    .section-title{
+
+        font-size:2rem;
+
+    }
+
+    .glass{
+
+        padding:28px;
+
+    }
+
+    .card{
+
+        padding:22px;
+
+    }
+
+    .card h3{
+
+        font-size:1.1rem;
+
+    }
+
+}
+
+@media (max-width:540px){
+
+    .header nav{
+
+        display:none;
+
+    }
+
+    .hero{
+
+        padding-top:120px;
+
+    }
+
+    .badge{
+
+        font-size:.8rem;
+
+        padding:10px 16px;
+
+    }
+
+    .avatar-wrapper{
+
+        width:150px;
+
+        height:150px;
+
+    }
+
+    .avatar{
+
+        width:150px;
+
+        height:150px;
+
+    }
+
+    .hero h1{
+
+        font-size:2.5rem;
+
+    }
+
+    .typing{
+
+        font-size:1rem;
+
+    }
+
+    .card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:18px;
+
+    }
+
+    .card span{
+
+        align-self:flex-end;
+
+    }
+
+    footer{
+
+        margin-top:80px;
+
+        font-size:.85rem;
+
+    }
+
+}
+
+/* ===========================================================
+   PREMIUM FINISH
+=========================================================== */
+
+html{
+
+    scrollbar-gutter:stable;
+
+}
+
+body{
+
+    text-rendering:optimizeLegibility;
+
+    -webkit-font-smoothing:antialiased;
+
+    -moz-osx-font-smoothing:grayscale;
+
+}
+
+/* ===========================================================
+   FOCUS
+=========================================================== */
+
+a:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:5px;
+
+    border-radius:12px;
+
+}
+
+/* ===========================================================
+   HERO
+=========================================================== */
+
+.hero h1{
+
+    background:linear-gradient(
+        180deg,
+        #FFFFFF 0%,
+        #D7E2FF 100%
+    );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+.description{
+
+    max-width:650px;
+
+}
+
+/* ===========================================================
+   GLASS EFFECT
+=========================================================== */
+
+.glass{
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.glass::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.05),
+        transparent 45%
+    );
+
+    pointer-events:none;
+
+}
+
+/* ===========================================================
+   PROJECT
+=========================================================== */
+
+.project{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.project::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    height:2px;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    transform:scaleX(0);
+
+    transform-origin:left;
+
+    transition:.45s;
+
+}
+
+.project:hover::after{
+
+    transform:scaleX(1);
+
+}
+
+/* ===========================================================
+   CARD
+=========================================================== */
+
+.card{
+
+    isolation:isolate;
+
+}
+
+.card h3{
+
+    transition:.35s;
+
+}
+
+.card:hover h3{
+
+    color:#FFFFFF;
+
+}
+
+.card p{
+
+    transition:.35s;
+
+}
+
+.card:hover p{
+
+    color:#D6E0F5;
+
+}
+
+/* ===========================================================
+   BADGE
+=========================================================== */
+
+.badge{
+
+    box-shadow:
+
+    0 0 0 1px rgba(255,255,255,.03),
+
+    0 10px 30px rgba(0,0,0,.18);
+
+}
+
+/* ===========================================================
+   AVATAR
+=========================================================== */
+
+.avatar{
+
+    transition:.5s;
+
+}
+
+.avatar:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* ===========================================================
+   LINKS
+=========================================================== */
+
+.header nav a{
+
+    font-weight:500;
+
+    letter-spacing:.3px;
+
+}
+
+/* ===========================================================
+   FOOTER
+=========================================================== */
+
+footer{
+
+    opacity:.8;
+
+    transition:.35s;
+
+}
+
+footer:hover{
+
+    opacity:1;
+
+}
+
+/* ===========================================================
+   UTILITIES
+=========================================================== */
+
+.hidden{
+
+    display:none!important;
+
+}
+
+.center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.w-100{
+
+    width:100%;
+
+}
+
+/* ===========================================================
+   IMAGE OPTIMIZATION
+=========================================================== */
+
+img{
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+}
+
+/* ===========================================================
+   SMOOTH TRANSITIONS
+=========================================================== */
+
+.card,
+.project,
+.glass,
+.avatar,
+.badge,
+.header nav a{
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        opacity .35s ease;
+
+}
+
+/* ===========================================================
+   FINAL POLISH
+=========================================================== */
+
+.hero,
+.section{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.background{
+
+    pointer-events:none;
+
+}
+
+body.loaded .hero{
+
+    animation:fadeUp .8s ease both;
+
+}
+
+body.loaded .section{
+
+    animation:fadeUp .8s ease both;
+
+}
+
+body.loaded .section:nth-of-type(2){
+
+    animation-delay:.15s;
+
+}
+
+body.loaded .section:nth-of-type(3){
+
+    animation-delay:.30s;
+
+}
+
+body.loaded .section:nth-of-type(4){
+
+    animation-delay:.45s;
+
+}
+
+body.loaded .section:nth-of-type(5){
+
+    animation-delay:.60s;
+
+}
+
+/* ===========================================================
+   END
+=========================================================== */
