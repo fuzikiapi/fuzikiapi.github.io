@@ -462,25 +462,31 @@
    
     function frame(now) {
 
-        const delta =
-            clamp(
-                (now - previousTime) / 16.666,
-                0,
-                2
-            );
+    if (!running) {
 
-        previousTime = now;
-
-        time +=
-            delta * 0.01;
-
-        update(delta);
-
-        render();
-
-        rafId = requestAnimationFrame(frame);
+        return;
 
     }
+
+    const delta =
+        clamp(
+            (now - previousTime) / 16.666,
+            0,
+            2
+        );
+
+    previousTime = now;
+
+    time +=
+        delta * 0.01;
+
+    update(delta);
+
+    render();
+
+    rafId = requestAnimationFrame(frame);
+
+}
 
      /* ======================================================
        VISIBILITY CONTROL
@@ -490,16 +496,16 @@
 
     function start() {
 
-        if (running) return;
+    if (running) return;
 
-        running = true;
+    running = true;
 
-        previousTime = performance.now();
+    previousTime = performance.now();
 
-        rafId = requestAnimationFrame(frame);
-       
-    }
+    rafId = requestAnimationFrame(frame);
 
+}
+   
     function stop() {
 
     running = false;
