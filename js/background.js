@@ -675,4 +675,5 @@ blurCtx.setTransform(
     resize
 
 };
+   
 })();
