@@ -1,1 +1,456 @@
+/* ==========================================================
+   KF PLATFORM
+   Layout
+   Version: 1.0
+========================================================== */
 
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.header{
+
+    position:fixed;
+
+    top:24px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(calc(100% - 48px),1280px);
+
+    height:72px;
+
+    z-index:var(--z-navbar);
+
+}
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+.navbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    width:100%;
+    height:100%;
+
+    padding:0 28px;
+
+    border-radius:999px;
+
+    background:rgba(10,13,26,.55);
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:var(--transition);
+
+}
+
+.navbar:hover{
+
+    border-color:rgba(255,255,255,.12);
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:1.7rem;
+
+    font-weight:800;
+
+    letter-spacing:-.05em;
+
+}
+
+.logo-dot{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    box-shadow:0 0 20px var(--primary);
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:38px;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    color:var(--text-secondary);
+
+    font-size:.95rem;
+
+    font-weight:500;
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    border-radius:999px;
+
+    background:var(--gradient-primary);
+
+    transition:.35s;
+
+}
+
+.nav-links a:hover{
+
+    color:var(--text);
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1.15fr .85fr;
+
+    align-items:center;
+
+    gap:80px;
+
+    padding-top:120px;
+
+    position:relative;
+
+}
+
+/* ==========================================================
+   HERO CONTENT
+========================================================== */
+
+.hero-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+.badge{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.03);
+
+    margin-bottom:28px;
+
+    font-size:.90rem;
+
+}
+
+.badge::before{
+
+    content:"";
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#3bff7d;
+
+    box-shadow:0 0 12px #3bff7d;
+
+}
+
+.hero h1{
+
+    font-size:clamp(4rem,8vw,7rem);
+
+    line-height:.95;
+
+    letter-spacing:-.08em;
+
+    margin-bottom:28px;
+
+}
+
+.hero p{
+
+    max-width:650px;
+
+    font-size:1.15rem;
+
+    margin-bottom:42px;
+
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    height:58px;
+
+    padding:0 28px;
+
+    border-radius:18px;
+
+    transition:var(--transition);
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    background:var(--gradient-primary);
+
+    color:#fff;
+
+    box-shadow:0 20px 50px rgba(124,92,255,.25);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-secondary{
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.03);
+
+}
+
+.btn-secondary:hover{
+
+    border-color:rgba(255,255,255,.18);
+
+}
+
+/* ==========================================================
+   HERO CARD
+========================================================== */
+
+.hero-card{
+
+    position:relative;
+
+}
+
+.profile-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:34px;
+
+    padding:34px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    -webkit-backdrop-filter:blur(25px);
+
+    transition:var(--transition);
+
+}
+
+.profile-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(124,92,255,.22);
+
+}
+
+.profile-image{
+
+    width:100%;
+
+    border-radius:24px;
+
+    margin-bottom:28px;
+
+}
+
+.profile-name{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.profile-role{
+
+    color:var(--text-secondary);
+
+    margin-bottom:30px;
+
+}
+
+.tech-list{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.tech{
+
+    padding:10px 18px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.03);
+
+    font-size:.90rem;
+
+}
+
+/* ==========================================================
+   SCROLL
+========================================================== */
+
+.scroll-indicator{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:40px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    color:var(--text-muted);
+
+    font-size:.90rem;
+
+}
+
+.scroll-mouse{
+
+    width:26px;
+
+    height:42px;
+
+    border-radius:999px;
+
+    border:2px solid rgba(255,255,255,.20);
+
+    position:relative;
+
+}
+
+.scroll-mouse::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:8px;
+
+    transform:translateX(-50%);
+
+    width:4px;
+    height:8px;
+
+    border-radius:999px;
+
+    background:var(--text);
+
+}
