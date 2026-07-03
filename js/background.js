@@ -658,8 +658,21 @@ blurCtx.setTransform(
        INITIALIZATION
        ====================================================== */
 
-    resize();
+    window.KF.Background = {
 
-    start();
+    init() {
 
+        resize();
+
+        start();
+
+    },
+
+    start,
+
+    stop,
+
+    resize
+
+};
 })();
