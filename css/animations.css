@@ -1,1 +1,378 @@
+/* ==========================================================
+   KF PLATFORM
+   Animations
+   Version: 1.0
+========================================================== */
 
+/* ==========================================================
+   TRANSITIONS
+========================================================== */
+
+.fade-in{
+    animation:fadeIn .8s ease forwards;
+}
+
+.fade-up{
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp .9s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+.fade-down{
+    opacity:0;
+    transform:translateY(-40px);
+    animation:fadeDown .9s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+.fade-left{
+    opacity:0;
+    transform:translateX(-40px);
+    animation:fadeLeft .9s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+.fade-right{
+    opacity:0;
+    transform:translateX(40px);
+    animation:fadeRight .9s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+/* ==========================================================
+   FLOAT
+========================================================== */
+
+.float{
+
+    animation:float 7s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+/* ==========================================================
+   GLOW
+========================================================== */
+
+.glow{
+
+    animation:glow 4s ease-in-out infinite;
+
+}
+
+@keyframes glow{
+
+    0%{
+
+        filter:brightness(1);
+
+    }
+
+    50%{
+
+        filter:brightness(1.15);
+
+    }
+
+    100%{
+
+        filter:brightness(1);
+
+    }
+
+}
+
+/* ==========================================================
+   PULSE
+========================================================== */
+
+.pulse{
+
+    animation:pulse 2.5s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.btn{
+
+    transition:
+        transform .35s,
+        box-shadow .35s,
+        background .35s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.btn:active{
+
+    transform:scale(.97);
+
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.profile-card{
+
+    transition:
+        transform .45s,
+        border-color .45s,
+        box-shadow .45s;
+
+}
+
+.profile-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 30px 70px rgba(124,92,255,.18);
+
+}
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+.navbar{
+
+    transition:
+        background .4s,
+        border-color .4s,
+        transform .4s;
+
+}
+
+.navbar:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   LOGO DOT
+========================================================== */
+
+.logo-dot{
+
+    animation:logoPulse 3s infinite;
+
+}
+
+@keyframes logoPulse{
+
+    0%{
+
+        box-shadow:
+        0 0 0 rgba(124,92,255,.2);
+
+    }
+
+    50%{
+
+        box-shadow:
+        0 0 18px rgba(124,92,255,.7);
+
+    }
+
+    100%{
+
+        box-shadow:
+        0 0 0 rgba(124,92,255,.2);
+
+    }
+
+}
+
+/* ==========================================================
+   SCROLL
+========================================================== */
+
+.scroll-mouse::before{
+
+    animation:scrollWheel 1.6s infinite;
+
+}
+
+@keyframes scrollWheel{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,0);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,14px);
+
+    }
+
+}
+
+/* ==========================================================
+   FADE
+========================================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeUp{
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+@keyframes fadeDown{
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+@keyframes fadeLeft{
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+@keyframes fadeRight{
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+/* ==========================================================
+   REVEAL
+========================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    transition:
+        opacity .8s,
+        transform .8s;
+
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:none;
+
+}
+
+/* ==========================================================
+   BACKGROUND PLACEHOLDER
+
+   O fundo líquido será criado em um arquivo separado.
+========================================================== */
+
+.background-liquid{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+}
