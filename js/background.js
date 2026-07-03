@@ -658,9 +658,15 @@ blurCtx.setTransform(
        INITIALIZATION
        ====================================================== */
 
-    window.KF.Background = {
+    let initialized = false;
+
+window.KF.Background = {
 
     init() {
+
+        if (initialized) return;
+
+        initialized = true;
 
         resize();
 
@@ -672,8 +678,18 @@ blurCtx.setTransform(
 
     stop,
 
-    resize
+    resize,
+
+    destroy() {
+
+        if (!initialized) return;
+
+        stop();
+
+        initialized = false;
+
+    }
 
 };
-   
+
 })();
