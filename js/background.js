@@ -551,8 +551,6 @@ blurCtx.setTransform(
 
     }
 
-    clearInterval(paletteInterval);
-
 }
 
     /* ======================================================
