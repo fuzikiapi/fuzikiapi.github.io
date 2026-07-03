@@ -1,276 +1,335 @@
-/* ==========================================================
-   AETHER v1.0
-   FOUNDATION
-========================================================== */
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap");
+<head>
 
-:root{
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    --bg:#050816;
-    --bg-secondary:#0b1224;
+    <title>Kadu Fuziki</title>
 
-    --surface:rgba(17,24,39,.72);
-    --surface-hover:rgba(24,34,56,.92);
+    <meta name="description"
+        content="Desenvolvedor, criador de projetos e entusiasta de tecnologia.">
 
-    --border:rgba(255,255,255,.08);
+    <meta name="theme-color" content="#050816">
 
-    --text:#f8fafc;
-    --muted:#94a3b8;
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kadu Fuziki">
+    <meta property="og:description"
+        content="Building meaningful digital experiences.">
+    <meta property="og:type" content="website">
 
-    --primary:#4f8cff;
-    --secondary:#7c3aed;
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    --radius:24px;
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-    --transition:.35s;
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 
-}
+</head>
 
-*{
+<body>
 
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    <!-- Background -->
 
-}
+    <div class="background">
 
-html{
+        <div class="gradient gradient-1"></div>
 
-    scroll-behavior:smooth;
+        <div class="gradient gradient-2"></div>
 
-}
+        <div class="noise"></div>
 
-body{
+    </div>
 
-    font-family:"Outfit",sans-serif;
+    <!-- Header -->
 
-    background:
-    radial-gradient(circle at top left,#4f8cff20,transparent 30%),
-    radial-gradient(circle at bottom right,#7c3aed18,transparent 35%),
-    linear-gradient(180deg,var(--bg),var(--bg-secondary));
+    <header class="header">
 
-    color:var(--text);
+        <div class="logo">
 
-    min-height:100vh;
+            AETHER
 
-    overflow-x:hidden;
+        </div>
 
-}
+        <nav>
 
-img{
+            <a href="#about">Sobre</a>
 
-    display:block;
-    max-width:100%;
+            <a href="#projects">Projetos</a>
 
-}
+            <a href="#social">Social</a>
 
-a{
+            <a href="#contact">Contato</a>
 
-    text-decoration:none;
+        </nav>
 
-    color:inherit;
+    </header>
 
-}
+    <!-- Hero -->
 
-.background{
+    <main>
 
-    position:fixed;
+        <section class="hero">
 
-    inset:0;
+            <div class="avatar-wrapper">
 
-    z-index:-2;
+                <div class="orbit orbit-1"></div>
+                <div class="orbit orbit-2"></div>
+                <div class="orbit orbit-3"></div>
 
-}
+                <img
+                    src="assets/images/avatar.png"
+                    alt="Kadu Fuziki"
+                    class="avatar">
 
-.container{
+            </div>
 
-    width:min(92%,760px);
+            <span class="badge">
 
-    margin:auto;
+                Disponível para novos projetos
 
-    padding:70px 0;
+            </span>
 
-}
-/* ==========================================================
-   HERO
-========================================================== */
+            <h1>
 
-.hero{
+                Kadu Fuziki
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
+            </h1>
 
-}
+            <p class="description">
 
-.avatar-container{
+                Building meaningful digital experiences.
 
-    position:relative;
+            </p>
 
-    width:190px;
-    height:190px;
+            <p class="typing">
 
-    margin-bottom:40px;
+                <span id="typing-text"></span>
 
-}
+            </p>
 
-.avatar{
+        </section>
 
-    width:190px;
-    height:190px;
+        <!-- ABOUT -->
 
-    object-fit:cover;
+        <section
+            class="section"
+            id="about">
 
-    border-radius:50%;
+            <div class="section-title">
 
-    position:relative;
+                Sobre
 
-    z-index:5;
+            </div>
 
-    border:3px solid rgba(255,255,255,.08);
+            <div class="glass">
 
-    box-shadow:
-        0 0 40px rgba(79,140,255,.15),
-        0 0 90px rgba(124,58,237,.10);
+                <p>
 
-}
+                    Olá! Meu nome é Kadu.
 
-/* ====================================== */
+                    Sou apaixonado por tecnologia, desenvolvimento, design, automação e criação de experiências digitais.
 
-.orbit{
+                    Atualmente desenvolvo projetos para Discord, GitHub e aplicações web modernas.
 
-    position:absolute;
+                </p>
 
-    border-radius:50%;
+            </div>
 
-    border:1px solid rgba(255,255,255,.08);
+        </section>
 
-}
+        <!-- PROJECTS -->
 
-.orbit-1{
+        <section
+            class="section"
+            id="projects">
 
-    inset:-10px;
+            <div class="section-title">
 
-    animation:spin 18s linear infinite;
+                Projetos
 
-}
+            </div>
 
-.orbit-2{
+            <div class="projects-grid">
 
-    inset:-24px;
+                <article class="project">
 
-    animation:spinReverse 26s linear infinite;
+                    <h3>
 
-}
+                        AETHER
 
-.orbit-3{
+                    </h3>
 
-    inset:-38px;
+                    <p>
 
-    animation:spin 34s linear infinite;
+                        Minha identidade digital construída do zero.
 
-}
+                    </p>
 
-/* ====================================== */
+                </article>
 
-.badge{
+                <article class="project">
 
-    display:inline-flex;
+                    <h3>
 
-    align-items:center;
+                        NexHub
 
-    gap:10px;
+                    </h3>
 
-    padding:12px 22px;
+                    <p>
 
-    border-radius:999px;
+                        Comunidade gamer para jogadores e desenvolvedores.
 
-    background:rgba(255,255,255,.05);
+                    </p>
 
-    border:1px solid var(--border);
+                </article>
 
-    color:#86efac;
+                <article class="project">
 
-    font-size:.95rem;
+                    <h3>
 
-    margin-bottom:30px;
+                        NexCode
 
-}
+                    </h3>
 
-/* ====================================== */
+                    <p>
 
-.hero h1{
+                        Bot inteligente para Discord.
 
-    font-size:clamp(3rem,7vw,5rem);
+                    </p>
 
-    font-weight:800;
+                </article>
 
-    letter-spacing:-2px;
+            </div>
 
-    margin-bottom:18px;
+        </section>
 
-}
+        <!-- SOCIAL -->
 
-.subtitle{
+        <section
+            class="section"
+            id="social">
 
-    max-width:620px;
+            <div class="section-title">
 
-    color:var(--muted);
+                Social
 
-    font-size:1.15rem;
+            </div>
 
-    line-height:1.8;
+            <div class="cards">
 
-    margin-bottom:18px;
+                <a href="#" class="card">
 
-}
+                    <div>
 
-.typing{
+                        <h3>Instagram</h3>
 
-    min-height:34px;
+                        <p>Bastidores e rotina.</p>
 
-    color:var(--primary);
+                    </div>
 
-    font-size:1.2rem;
+                    <span>↗</span>
 
-    font-weight:600;
+                </a>
 
-    margin-bottom:70px;
+                <a href="#" class="card">
 
-}
+                    <div>
 
-/* ====================================== */
+                        <h3>GitHub</h3>
 
-@keyframes spin{
+                        <p>Projetos e código.</p>
 
-    from{
+                    </div>
 
-        transform:rotate(0deg);
+                    <span>↗</span>
 
-    }
+                </a>
 
-    to{
+                <a href="#" class="card">
 
-        transform:rotate(360deg);
+                    <div>
 
-    }
+                        <h3>Discord</h3>
 
-}
+                        <p>Comunidade.</p>
 
-@keyframes spinReverse{
+                    </div>
 
-    from{
+                    <span>↗</span>
 
-        transform:rotate(360deg);
+                </a>
 
-    }
+                <a href="#" class="card">
 
-    to{
+                    <div>
 
-        transform:rotate(0deg);
+                        <h3>Spotify</h3>
 
-    }
+                        <p>Músicas favoritas.</p>
 
-}
+                    </div>
+
+                    <span>↗</span>
+
+                </a>
+
+                <a href="#" class="card">
+
+                    <div>
+
+                        <h3>Steam</h3>
+
+                        <p>Jogos.</p>
+
+                    </div>
+
+                    <span>↗</span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- CONTACT -->
+
+        <section
+            class="section"
+            id="contact">
+
+            <div class="section-title">
+
+                Contato
+
+            </div>
+
+            <div class="glass">
+
+                <p>
+
+                    Em breve uma área de contato integrada.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        © 2026 • Kadu Fuziki
+
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
