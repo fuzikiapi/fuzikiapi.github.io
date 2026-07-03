@@ -1,118 +1,633 @@
 /* ==========================================================
-   KF PLATFORM
+   KF Platform
    Background
-   Version: 1.0
-========================================================== */
+   Parte 1
+   ========================================================== */
 
-.background{
+/* ==========================================================
+   BODY
+   ========================================================== */
 
-    position:fixed;
+html {
 
-    inset:0;
-
-    overflow:hidden;
-
-    z-index:-100;
-
-    background:#050816;
+    background: var(--color-background);
 
 }
 
-#liquid-background{
+body {
 
-    position:absolute;
+    position: relative;
 
-    inset:0;
+    background: var(--color-background);
 
-    width:100%;
-
-    height:100%;
-
-    display:block;
+    overflow-x: hidden;
 
 }
 
-.background-overlay{
+/* ==========================================================
+   CANVAS
+   ========================================================== */
 
-    position:absolute;
+#aurora-canvas {
 
-    inset:0;
+    position: fixed;
 
-    background:
+    inset: 0;
 
-    radial-gradient(circle at top left,
-    rgba(77,163,255,.08),
-    transparent 35%),
+    width: 100%;
 
-    radial-gradient(circle at bottom right,
-    rgba(124,92,255,.10),
-    transparent 40%);
+    height: 100%;
 
-    pointer-events:none;
+    display: block;
+
+    pointer-events: none;
+
+    z-index: var(--z-background);
+
+    opacity: .96;
 
 }
 
-.grid{
+/* ==========================================================
+   NOISE
+   ========================================================== */
 
-    position:absolute;
+.noise {
 
-    inset:0;
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: var(--z-noise);
+
+    opacity: .045;
+
+    mix-blend-mode: soft-light;
 
     background-image:
 
-        linear-gradient(
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
+        radial-gradient(
+            rgba(255,255,255,.18) .6px,
+            transparent .7px
         );
 
-    background-size:80px 80px;
+    background-size:
+        6px 6px;
 
-    mask-image:
-
-        radial-gradient(circle,
-        black 25%,
-        transparent 90%);
-
-    opacity:.45;
-
-    pointer-events:none;
+    animation:
+        noiseDrift 10s linear infinite;
 
 }
 
-.vignette{
+@keyframes noiseDrift {
 
-    position:absolute;
+    from {
 
-    inset:0;
+        transform:
+            translate3d(0,0,0);
+
+    }
+
+    to {
+
+        transform:
+            translate3d(-120px,-80px,0);
+
+    }
+
+}
+
+/* ==========================================================
+   GLOBAL OVERLAY
+   ========================================================== */
+
+.gradient-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: calc(var(--z-noise) + 1);
 
     background:
 
-    radial-gradient(circle,
-    transparent 35%,
-    rgba(5,8,22,.70));
+        radial-gradient(
+            circle at top,
+            rgba(78,125,255,.08),
+            transparent 40%
+        ),
 
-    pointer-events:none;
+        radial-gradient(
+            circle at bottom right,
+            rgba(139,92,246,.08),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            circle at bottom left,
+            rgba(110,231,247,.05),
+            transparent 55%
+        );
+
+    mix-blend-mode: screen;
 
 }
 
-.noise{
+/* ==========================================================
+   VIGNETTE
+   ========================================================== */
 
-    position:absolute;
+body::before {
 
-    inset:0;
+    content: "";
 
-    opacity:.025;
+    position: fixed;
 
-    mix-blend-mode:soft-light;
+    inset: 0;
 
-    background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+    pointer-events: none;
 
-    pointer-events:none;
+    z-index: 0;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            transparent 48%,
+            rgba(0,0,0,.12) 72%,
+            rgba(0,0,0,.34) 100%
+        );
+
+}
+
+/* ==========================================================
+   TOP LIGHT
+   ========================================================== */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    left: 50%;
+
+    top: -340px;
+
+    transform: translateX(-50%);
+
+    width: 1200px;
+
+    height: 700px;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.05),
+            transparent 70%
+        );
+
+    filter:
+
+        blur(80px);
+
+    opacity: .55;
+
+}
+
+/* ==========================================================
+   HERO GLOW
+   ========================================================== */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width: 900px;
+
+    aspect-ratio: 1;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(78,125,255,.12),
+            rgba(139,92,246,.05),
+            transparent 70%
+        );
+
+    filter:
+
+        blur(70px);
+
+    opacity: .65;
+
+}
+
+/* ==========================================================
+   GLASS REFLECTION
+   ========================================================== */
+
+.glass-card::after,
+.hero-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    border-radius: inherit;
+
+    background:
+
+        linear-gradient(
+            140deg,
+            rgba(255,255,255,.12),
+            transparent 30%,
+            transparent 70%,
+            rgba(255,255,255,.04)
+        );
+
+    opacity: .55;
+
+}
+
+/* ==========================================================
+   SECTION GLOW
+   ========================================================== */
+
+.section {
+
+    isolation: isolate;
+
+}
+
+.section::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: auto;
+
+    left: 50%;
+
+    top: 0;
+
+    transform: translateX(-50%);
+
+    width: 760px;
+
+    height: 1px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.08),
+            transparent
+        );
+
+    opacity: .6;
+
+}
+
+/* ==========================================================
+   AURORA LAYERS
+   ========================================================== */
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+
+        radial-gradient(
+            circle at 25% 30%,
+            rgba(78,125,255,.08),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 78% 34%,
+            rgba(110,231,247,.07),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 78%,
+            rgba(139,92,246,.08),
+            transparent 36%
+        );
+
+    filter: blur(60px);
+
+    animation:
+        auroraFloat 18s ease-in-out infinite alternate;
+
+    opacity: .85;
+
+}
+
+/* ==========================================================
+   BACKGROUND DEPTH
+   ========================================================== */
+
+main {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+header,
+footer {
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+/* ==========================================================
+   LIGHT BLOBS
+   ========================================================== */
+
+.project-card::before,
+.github-card::before,
+.social-card::before {
+
+    backdrop-filter: blur(2px);
+
+}
+
+.project-card:hover::before,
+.github-card:hover::before,
+.social-card:hover::before {
+
+    opacity: 1;
+
+}
+
+/* ==========================================================
+   GLOW RINGS
+   ========================================================== */
+
+.hero-card {
+
+    overflow: hidden;
+
+}
+
+.hero-card::before {
+
+    animation:
+        heroGlow 10s linear infinite;
+
+}
+
+@keyframes heroGlow {
+
+    0% {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    100% {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+/* ==========================================================
+   AMBIENT LIGHT
+   ========================================================== */
+
+.section:nth-child(even)::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -160px;
+
+    transform: translateX(-50%);
+
+    width: 680px;
+
+    height: 280px;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+            rgba(78,125,255,.05),
+            transparent 72%
+        );
+
+    filter: blur(80px);
+
+}
+
+/* ==========================================================
+   GLASS EDGE HIGHLIGHT
+   ========================================================== */
+
+.glass-card,
+.project-card,
+.github-card,
+.social-card,
+.spotify-card {
+
+    overflow: hidden;
+
+}
+
+.glass-card > *,
+.project-card > *,
+.github-card > *,
+.social-card > *,
+.spotify-card > * {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+/* ==========================================================
+   BACKGROUND ANIMATIONS
+   ========================================================== */
+
+@keyframes auroraFloat {
+
+    0% {
+
+        transform:
+            translate3d(-2%, -2%, 0)
+            scale(1);
+
+    }
+
+    25% {
+
+        transform:
+            translate3d(2%, 3%, 0)
+            scale(1.05);
+
+    }
+
+    50% {
+
+        transform:
+            translate3d(-1%, 4%, 0)
+            scale(1.02);
+
+    }
+
+    75% {
+
+        transform:
+            translate3d(3%, -3%, 0)
+            scale(1.06);
+
+    }
+
+    100% {
+
+        transform:
+            translate3d(-2%, 2%, 0)
+            scale(1.03);
+
+    }
+
+}
+
+/* ==========================================================
+   GPU OPTIMIZATION
+   ========================================================== */
+
+#aurora-canvas,
+.noise,
+.gradient-overlay,
+.hero::after,
+.hero-card,
+.project-card,
+.github-card {
+
+    will-change:
+        transform,
+        opacity,
+        filter;
+
+    transform:
+        translateZ(0);
+
+    backface-visibility: hidden;
+
+}
+
+/* ==========================================================
+   PERFORMANCE
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .noise,
+    .hero::after,
+    .hero-card::before {
+
+        animation: none !important;
+
+    }
+
+}
+
+/* ==========================================================
+   HIGH CONTRAST
+   ========================================================== */
+
+@media (prefers-contrast: more) {
+
+    .gradient-overlay {
+
+        opacity: .35;
+
+    }
+
+    .glass-card,
+    .project-card,
+    .github-card,
+    .spotify-card,
+    .social-card {
+
+        border-color:
+            rgba(255,255,255,.28);
+
+    }
+
+}
+
+/* ==========================================================
+   PRINT
+   ========================================================== */
+
+@media print {
+
+    #aurora-canvas,
+    .noise,
+    .gradient-overlay,
+    body::before,
+    body::after,
+    .hero::before,
+    .hero::after {
+
+        display: none !important;
+
+    }
 
 }
