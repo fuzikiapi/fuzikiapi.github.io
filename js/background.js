@@ -100,6 +100,17 @@ const blurCtx = blurCanvas.getContext("2d", {
 
         canvas.width = width * CONFIG.pixelRatio;
         canvas.height = height * CONFIG.pixelRatio;
+        blurCanvas.width = canvas.width;
+        blurCanvas.height = canvas.height;
+
+blurCtx.setTransform(
+    CONFIG.pixelRatio,
+    0,
+    0,
+    CONFIG.pixelRatio,
+    0,
+    0
+);
 
         canvas.style.width = width + "px";
         canvas.style.height = height + "px";
@@ -314,23 +325,38 @@ const blurCtx = blurCanvas.getContext("2d", {
 
     function drawBlobs() {
 
-        ctx.save();
+    blurCtx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
 
-        ctx.filter = `blur(${CONFIG.blur}px)`;
+    blurCtx.save();
 
-        ctx.globalCompositeOperation = "screen";
+    blurCtx.filter = `blur(${CONFIG.blur}px)`;
 
-        ctx.globalAlpha = CONFIG.opacity;
+    blurCtx.globalCompositeOperation = "screen";
 
-        for (const blob of blobs) {
+    blurCtx.globalAlpha = CONFIG.opacity;
 
-            blob.draw(ctx);
+    for (const blob of blobs) {
 
-        }
-
-        ctx.restore();
+        blob.draw(blurCtx);
 
     }
+
+    blurCtx.restore();
+
+    ctx.drawImage(
+        blurCanvas,
+        0,
+        0,
+        width,
+        height
+    );
+
+}
 
     /* ======================================================
        LIGHT
