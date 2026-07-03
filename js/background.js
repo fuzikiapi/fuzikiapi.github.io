@@ -46,6 +46,13 @@
         desynchronized: true
     });
 
+   const blurCanvas = document.createElement("canvas");
+
+const blurCtx = blurCanvas.getContext("2d", {
+    alpha: true,
+    desynchronized: true
+});
+
     let width = 0;
     let height = 0;
 
