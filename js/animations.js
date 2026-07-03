@@ -150,8 +150,6 @@ let ticking = false;
        RAF SCROLL EFFECT
        ====================================================== */
 
-    let ticking = false;
-
     function onScroll() {
 
         if (ticking) return;
