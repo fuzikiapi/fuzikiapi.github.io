@@ -551,6 +551,8 @@ blurCtx.setTransform(
 
     }
 
+    clearInterval(paletteInterval);
+
 }
 
     /* ======================================================
@@ -625,10 +627,10 @@ blurCtx.setTransform(
 
     }
 
-    setInterval(
-        randomizePalette,
-        45000
-    );
+    const paletteInterval = setInterval(
+    randomizePalette,
+    45000
+);
 
     /* ======================================================
        WINDOW FOCUS
