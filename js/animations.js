@@ -59,8 +59,6 @@ let ticking = false;
 
     }
 
-    applyStagger(revealElements);
-
     /* ======================================================
        INTERSECTION OBSERVER
        ====================================================== */
