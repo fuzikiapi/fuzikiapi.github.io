@@ -92,3 +92,185 @@ a{
     padding:70px 0;
 
 }
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+
+}
+
+.avatar-container{
+
+    position:relative;
+
+    width:190px;
+    height:190px;
+
+    margin-bottom:40px;
+
+}
+
+.avatar{
+
+    width:190px;
+    height:190px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    position:relative;
+
+    z-index:5;
+
+    border:3px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 0 40px rgba(79,140,255,.15),
+        0 0 90px rgba(124,58,237,.10);
+
+}
+
+/* ====================================== */
+
+.orbit{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.orbit-1{
+
+    inset:-10px;
+
+    animation:spin 18s linear infinite;
+
+}
+
+.orbit-2{
+
+    inset:-24px;
+
+    animation:spinReverse 26s linear infinite;
+
+}
+
+.orbit-3{
+
+    inset:-38px;
+
+    animation:spin 34s linear infinite;
+
+}
+
+/* ====================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid var(--border);
+
+    color:#86efac;
+
+    font-size:.95rem;
+
+    margin-bottom:30px;
+
+}
+
+/* ====================================== */
+
+.hero h1{
+
+    font-size:clamp(3rem,7vw,5rem);
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+
+    margin-bottom:18px;
+
+}
+
+.subtitle{
+
+    max-width:620px;
+
+    color:var(--muted);
+
+    font-size:1.15rem;
+
+    line-height:1.8;
+
+    margin-bottom:18px;
+
+}
+
+.typing{
+
+    min-height:34px;
+
+    color:var(--primary);
+
+    font-size:1.2rem;
+
+    font-weight:600;
+
+    margin-bottom:70px;
+
+}
+
+/* ====================================== */
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes spinReverse{
+
+    from{
+
+        transform:rotate(360deg);
+
+    }
+
+    to{
+
+        transform:rotate(0deg);
+
+    }
+
+}
