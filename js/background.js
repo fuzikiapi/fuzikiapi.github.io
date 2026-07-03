@@ -458,6 +458,8 @@
     let previousTime =
         performance.now();
 
+   let rafId = null;
+   
     function frame(now) {
 
         const delta =
