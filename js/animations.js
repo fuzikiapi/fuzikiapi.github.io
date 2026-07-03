@@ -337,4 +337,36 @@
 
     }
 
+/* ======================================================
+   MODULE
+   ====================================================== */
+
+let initialized = false;
+
+   window.KF.Animations = {
+
+    get initialized() {
+
+        return initialized;
+
+    },
+
+    init() {
+
+        if (initialized) return;
+
+        initialized = true;
+
+    },
+
+    destroy() {
+
+        if (!initialized) return;
+
+        initialized = false;
+
+    }
+
+};
+   
 })();
