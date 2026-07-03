@@ -141,5 +141,20 @@ document.addEventListener("DOMContentLoaded", () => {
         },1200);
 
     });
+
+        /* ============================
+       Mouse Light
+    ============================ */
+
+    const mouseLight = document.querySelector(".mouse-light");
+
+    document.addEventListener("mousemove", (event) => {
+
+        if (!mouseLight) return;
+
+        mouseLight.style.left = event.clientX + "px";
+        mouseLight.style.top = event.clientY + "px";
+
+    });
     
 });
