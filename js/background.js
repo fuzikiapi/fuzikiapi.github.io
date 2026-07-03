@@ -688,13 +688,18 @@ window.KF.Background = {
 
     destroy() {
 
-        if (!initialized) return;
+    if (!initialized) return;
 
-        stop();
+    stop();
 
-        initialized = false;
+    window.removeEventListener(
+        "resize",
+        resize
+    );
 
-    }
+    initialized = false;
+
+}
 
 };
 
