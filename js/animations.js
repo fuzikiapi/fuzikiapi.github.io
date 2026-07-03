@@ -371,13 +371,17 @@ let ticking = false;
 
     },
 
-    init() {
+init() {
 
-        if (initialized) return;
+    if (initialized) return;
 
-        initialized = true;
+    initialized = true;
 
-    },
+    applyStagger(revealElements);
+
+    startLoop();
+
+},
 
     destroy() {
 
