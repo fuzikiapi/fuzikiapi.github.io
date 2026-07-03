@@ -3,55 +3,297 @@
 
 <head>
 
-    SEO
+    <!-- =======================================================
+    META
+    ======================================================== -->
 
-    Fonts
+    <meta charset="UTF-8">
 
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color"
+          content="#050816">
+
+    <meta name="description"
+          content="Kadu Fuziki • Design, Desenvolvimento e Inteligência Artificial">
+
+    <title>Kadu Fuziki</title>
+
+    <!-- =======================================================
+    GOOGLE FONTS
+    ======================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- =======================================================
     CSS
+    ======================================================== -->
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/background.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
 </head>
 
 <body>
 
-    Loader
+    <!-- =======================================================
+    LOADER
+    ======================================================== -->
 
-    Background
+    <div id="loader">
 
-    Mouse Glow
+        <div class="loader-logo">
 
-    Header
+            KF
 
-        Logo
+        </div>
 
-        Navegação
+    </div>
 
-        Idioma
+    <!-- =======================================================
+    BACKGROUND
+    ======================================================== -->
 
-    Main
+    <div class="background">
 
-        Hero
+        <canvas id="liquid-background"></canvas>
 
-            Conteúdo
+        <div class="background-overlay"></div>
 
-            Card
+        <div class="grid"></div>
 
-        Sobre
+        <div class="vignette"></div>
 
-        Projetos
+        <div class="noise"></div>
 
-        GitHub
+    </div>
 
-        Atualmente
+    <!-- =======================================================
+    CURSOR GLOW
+    ======================================================== -->
 
-        Spotify
+    <div id="cursor-glow"></div>
 
-        Loja
+    <!-- =======================================================
+    HEADER
+    ======================================================== -->
 
-        Contato
+    <header class="header">
 
-    Footer
+        <nav class="navbar">
 
-    Scripts
+            <a href="#hero" class="logo">
+
+                KF
+
+                <span class="logo-dot"></span>
+
+            </a>
+
+            <ul class="nav-links">
+
+                <li><a href="#about">Quem sou</a></li>
+
+                <li><a href="#projects">Projetos</a></li>
+
+                <li><a href="#github">GitHub</a></li>
+
+                <li><a href="#contact">Contato</a></li>
+
+            </ul>
+
+            <div class="language-switcher">
+
+                PT
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- =======================================================
+    MAIN
+    ======================================================== -->
+
+    <main>
+
+        <!-- HERO -->
+
+        <section id="hero" class="hero">
+
+            <div class="container">
+
+                <!-- Hero esquerda -->
+
+                <div class="hero-content">
+
+                    <span class="badge">
+
+                        Disponível para novos projetos
+
+                    </span>
+
+                    <h1>
+
+                        Criando
+                        experiências
+                        digitais.
+
+                    </h1>
+
+                    <p>
+
+                        Design, desenvolvimento,
+                        inteligência artificial e
+                        criação de produtos digitais.
+
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#projects"
+                           class="btn btn-primary">
+
+                            Explorar Projetos
+
+                        </a>
+
+                        <a href="#github"
+                           class="btn btn-secondary">
+
+                            GitHub
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Hero direita -->
+
+                <aside class="hero-card">
+
+                    <article class="profile-card">
+
+                        <img
+                            src="assets/images/avatar/avatar.png"
+                            alt="Kadu Fuziki"
+                            class="profile-image">
+
+                        <h2 class="profile-name">
+
+                            Kadu Fuziki
+
+                        </h2>
+
+                        <p class="profile-role">
+
+                            Criando produtos digitais.
+
+                        </p>
+
+                        <div class="tech-list">
+
+                            <span class="tech">Design</span>
+
+                            <span class="tech">IA</span>
+
+                            <span class="tech">Desenvolvimento</span>
+
+                            <span class="tech">Games</span>
+
+                            <span class="tech">Lifestyle</span>
+
+                        </div>
+
+                    </article>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+        <!-- =======================================================
+        QUEM SOU
+        ======================================================== -->
+
+        <section id="about"></section>
+
+        <!-- =======================================================
+        PROJETOS
+        ======================================================== -->
+
+        <section id="projects"></section>
+
+        <!-- =======================================================
+        GITHUB
+        ======================================================== -->
+
+        <section id="github"></section>
+
+        <!-- =======================================================
+        SPOTIFY
+        ======================================================== -->
+
+        <section id="spotify"></section>
+
+        <!-- =======================================================
+        LOJA
+        ======================================================== -->
+
+        <section id="store"></section>
+
+        <!-- =======================================================
+        CONTATO
+        ======================================================== -->
+
+        <section id="contact"></section>
+
+    </main>
+
+    <!-- =======================================================
+    FOOTER
+    ======================================================== -->
+
+    <footer>
+
+    </footer>
+
+    <!-- =======================================================
+    JAVASCRIPT
+    ======================================================== -->
+
+    <script src="js/app.js"></script>
+
+    <script src="js/background.js"></script>
+
+    <script src="js/animations.js"></script>
+
+    <script src="js/cursor.js"></script>
+
+    <script src="js/language.js"></script>
+
+    <script src="js/github.js"></script>
+
+    <script src="js/spotify.js"></script>
+
+    <script src="js/discord.js"></script>
 
 </body>
 
