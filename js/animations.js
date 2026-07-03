@@ -367,8 +367,6 @@ let ticking = false;
    MODULE
    ====================================================== */
 
-let initialized = false;
-
    window.KF.Animations = {
 
     get initialized() {
