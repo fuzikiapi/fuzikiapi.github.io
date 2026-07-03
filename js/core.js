@@ -1,0 +1,1 @@
+window.KF = window.KF || {};
