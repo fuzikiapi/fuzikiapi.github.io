@@ -525,7 +525,7 @@ blurCtx.setTransform(
        VISIBILITY CONTROL
        ====================================================== */
 
-    let running = true;
+    let running = false;
 
     function start() {
 
@@ -670,15 +670,17 @@ window.KF.Background = {
 
     init() {
 
-        if (initialized) return;
+    if (initialized) return;
 
-        initialized = true;
+    initialized = true;
 
-        resize();
+    running = false;
 
-        start();
+    resize();
 
-    },
+    start();
+
+},
 
     start,
 
