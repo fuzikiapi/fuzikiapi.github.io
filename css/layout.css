@@ -314,13 +314,23 @@
 
 }
 
-.social-button img {
+.social-button svg {
 
     width: 22px;
 
     height: 22px;
 
-    opacity: .9;
+    stroke-width: 1.8;
+
+    color: white;
+
+    transition: .25s ease;
+
+}
+
+.social-button:hover svg {
+
+    transform: scale(1.12);
 
 }
 
