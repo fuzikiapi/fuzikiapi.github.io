@@ -10,11 +10,11 @@
 
     window.KF = {
 
-        version: "1.0.0",
+        version: "2.0.0",
 
         config: {
 
-            debug: false,
+            timezone: "America/Sao_Paulo",
 
             language: "pt-BR"
 
@@ -22,74 +22,29 @@
 
         state: {
 
-            initialized: false,
+            introFinished: false,
 
-            mobile: false,
-
-            touch: false,
-
-            reducedMotion: window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches
+            theme: "dark"
 
         },
 
-        utils: {
+        elements: {},
 
-            clamp(value, min, max) {
-
-                return Math.min(max, Math.max(min, value));
-
-            },
-
-            lerp(start, end, amount) {
-
-                return start + (end - start) * amount;
-
-            },
-
-            debounce(callback, delay = 100) {
-
-                let timeout;
-
-                return (...args) => {
-
-                    clearTimeout(timeout);
-
-                    timeout = setTimeout(() => {
-
-                        callback(...args);
-
-                    }, delay);
-
-                };
-
-            },
-
-            throttle(callback, delay = 100) {
-
-                let waiting = false;
-
-                return (...args) => {
-
-                    if (waiting) return;
-
-                    waiting = true;
-
-                    callback(...args);
-
-                    setTimeout(() => {
-
-                        waiting = false;
-
-                    }, delay);
-
-                };
-
-            }
-
-        }
+        utils: {}
 
     };
+
+    /* ======================================================
+       HELPERS
+       ====================================================== */
+
+    window.KF.utils.select = (selector) =>
+        document.querySelector(selector);
+
+    window.KF.utils.selectAll = (selector) =>
+        document.querySelectorAll(selector);
+
+    window.KF.utils.pad = (value) =>
+        String(value).padStart(2, "0");
 
 })();
