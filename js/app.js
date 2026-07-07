@@ -1,183 +1,290 @@
 /* ==========================================================
    KF Platform
-   App Controller
+   App
    ========================================================== */
 
 (() => {
     "use strict";
 
-    /* ======================================================
-       STATE
-       ====================================================== */
+    const App = {
 
-    let initialized = false;
+        intro: null,
 
-    /* ======================================================
-       DOM CACHE
-       ====================================================== */
+        app: null,
 
-    const DOM = {
+        enterButton: null,
 
-        body: document.body,
+        clock: null,
 
-        header: document.querySelector(".header"),
+        modals: [],
 
-        main: document.querySelector("main"),
+        navButtons: [],
 
-        footer: document.querySelector("footer"),
-
-        languageButton: document.getElementById("languageButton")
+        closeButtons: []
 
     };
 
     /* ======================================================
-       MODULE INITIALIZATION
-       ====================================================== */
-
-    function initializeModules() {
-
-        if (window.KF.Background) {
-
-            window.KF.Background.init();
-
-        }
-
-        if (window.KF.Animations) {
-
-            window.KF.Animations.init();
-
-        }
-
-        if (window.KF.Language?.init) {
-
-            window.KF.Language.init();
-
-        }
-
-        if (window.KF.GitHub?.init) {
-
-            window.KF.GitHub.init();
-
-        }
-
-        if (window.KF.Spotify?.init) {
-
-            window.KF.Spotify.init();
-
-        }
-
-        if (window.KF.Cursor?.init) {
-
-            window.KF.Cursor.init();
-
-        }
-
-        if (window.KF.Discord?.init) {
-
-            window.KF.Discord.init();
-
-        }
-
-    }
-
-    /* ======================================================
-       MODULE DESTROY
-       ====================================================== */
-
-    function destroyModules() {
-
-        if (window.KF.Background?.destroy) {
-
-            window.KF.Background.destroy();
-
-        }
-
-        if (window.KF.Animations?.destroy) {
-
-            window.KF.Animations.destroy();
-
-        }
-
-        if (window.KF.Language?.destroy) {
-
-            window.KF.Language.destroy();
-
-        }
-
-        if (window.KF.GitHub?.destroy) {
-
-            window.KF.GitHub.destroy();
-
-        }
-
-        if (window.KF.Spotify?.destroy) {
-
-            window.KF.Spotify.destroy();
-
-        }
-
-        if (window.KF.Cursor?.destroy) {
-
-            window.KF.Cursor.destroy();
-
-        }
-
-        if (window.KF.Discord?.destroy) {
-
-            window.KF.Discord.destroy();
-
-        }
-
-    }
-
-    /* ======================================================
-       APP
+       INIT
        ====================================================== */
 
     function init() {
 
-        if (initialized) return;
+        cacheDOM();
 
-        initialized = true;
+        bindEvents();
 
-        initializeModules();
-
-        console.info(
-            "%cKF Platform initialized",
-            "color:#8B5CF6;font-weight:bold;"
-        );
-
-    }
-
-    function destroy() {
-
-        if (!initialized) return;
-
-        destroyModules();
-
-        initialized = false;
+        startClock();
 
     }
 
     /* ======================================================
-       PUBLIC API
+       DOM
        ====================================================== */
 
-    window.KF.App = {
+    function cacheDOM() {
 
-        get initialized() {
+        App.intro =
+            document.getElementById("intro");
 
-            return initialized;
+        App.app =
+            document.getElementById("app");
 
-        },
+        App.enterButton =
+            document.getElementById("enterButton");
 
-        DOM,
+        App.clock =
+            document.getElementById("clock");
 
-        init,
+        App.modals =
+            document.querySelectorAll(".modal");
 
-        destroy
+        App.navButtons =
+            document.querySelectorAll(".nav-button");
 
-    };
+        App.closeButtons =
+            document.querySelectorAll(".close-modal");
+
+    }
+
+    /* ======================================================
+       EVENTS
+       ====================================================== */
+
+    function bindEvents() {
+
+        App.enterButton.addEventListener(
+
+            "click",
+
+            enterPlatform
+
+        );
+
+        App.navButtons.forEach((button) => {
+
+            button.addEventListener(
+
+                "click",
+
+                openModal
+
+            );
+
+        });
+
+        App.closeButtons.forEach((button) => {
+
+            button.addEventListener(
+
+                "click",
+
+                closeAllModals
+
+            );
+
+        });
+
+        App.modals.forEach((modal) => {
+
+            modal.addEventListener(
+
+                "click",
+
+                (event) => {
+
+                    if (event.target === modal) {
+
+                        closeAllModals();
+
+                    }
+
+                }
+
+            );
+
+        });
+
+        document.addEventListener(
+
+            "keydown",
+
+            (event) => {
+
+                if (event.key === "Escape") {
+
+                    closeAllModals();
+
+                }
+
+            }
+
+        );
+
+    }
+
+    /* ======================================================
+       INTRO
+       ====================================================== */
+
+    function enterPlatform() {
+
+        App.intro.style.opacity = "0";
+
+        App.intro.style.pointerEvents = "none";
+
+        setTimeout(() => {
+
+            App.intro.remove();
+
+            App.app.hidden = false;
+
+            App.app.animate(
+
+                [
+
+                    {
+
+                        opacity: 0,
+
+                        transform:
+                            "translateY(20px)"
+
+                    },
+
+                    {
+
+                        opacity: 1,
+
+                        transform:
+                            "translateY(0)"
+
+                    }
+
+                ],
+
+                {
+
+                    duration: 600,
+
+                    easing:
+                        "ease-out",
+
+                    fill: "forwards"
+
+                }
+
+            );
+
+            window.KF.state.introFinished = true;
+
+        }, 600);
+
+    }
+
+    /* ======================================================
+       MODALS
+       ====================================================== */
+
+    function openModal(event) {
+
+        const modalName =
+
+            event.currentTarget.dataset.modal;
+
+        closeAllModals();
+
+        document
+
+            .getElementById(
+
+                modalName + "Modal"
+
+            )
+
+            ?.classList.add("active");
+
+    }
+
+    function closeAllModals() {
+
+        App.modals.forEach((modal) => {
+
+            modal.classList.remove("active");
+
+        });
+
+    }
+
+    /* ======================================================
+       CLOCK
+       ====================================================== */
+
+    function updateClock() {
+
+        const now = new Date();
+
+        const formatter =
+
+            new Intl.DateTimeFormat(
+
+                "pt-BR",
+
+                {
+
+                    timeZone:
+
+                        "America/Sao_Paulo",
+
+                    hour: "2-digit",
+
+                    minute: "2-digit"
+
+                }
+
+            );
+
+        App.clock.textContent =
+
+            "UTC-3 " +
+
+            formatter.format(now);
+
+    }
+
+    function startClock() {
+
+        updateClock();
+
+        setInterval(
+
+            updateClock,
+
+            1000
+
+        );
+
+    }
 
     /* ======================================================
        START
@@ -187,13 +294,7 @@
 
         "DOMContentLoaded",
 
-        () => {
-
-            window.KF.App.init();
-
-        },
-
-        { once: true }
+        init
 
     );
 
