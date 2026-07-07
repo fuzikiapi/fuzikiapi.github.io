@@ -190,7 +190,7 @@
 
         }
 
-        DOM.enter.style.display = "inline-flex";
+        DOM.enter.classList.add("show");
 
         DOM.enter.animate(
 
