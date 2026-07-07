@@ -670,6 +670,8 @@ window.KF.Background = {
 
     init() {
 
+    console.log("Background init");
+
     if (initialized) return;
 
     initialized = true;
