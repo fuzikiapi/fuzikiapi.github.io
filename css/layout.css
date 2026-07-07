@@ -336,23 +336,55 @@
 
     align-items: center;
 
-    background: var(--color-background);
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(124,92,255,.12),
+            transparent 35%
+        ),
+        #09090b;
 
     z-index: 9999;
+
+    transition:
+        opacity .7s ease,
+        visibility .7s ease;
 
 }
 
 .intro-container {
 
-    width: min(100% - 48px, 720px);
+    width: min(90%, 720px);
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    background:
+
+        rgba(255,255,255,.025);
+
+    border:
+
+        1px solid rgba(255,255,255,.06);
+
+    backdrop-filter:
+
+        blur(20px);
+
+    text-align: left;
 
 }
 
 .intro-title {
 
-    margin-bottom: var(--space-6);
+    font-size: 30px;
 
-    font-size: var(--font-size-xl);
+    font-weight: 700;
+
+    margin-bottom: 40px;
+
+    letter-spacing: 2px;
 
 }
 
@@ -370,33 +402,55 @@
 
     display: grid;
 
-    grid-template-columns: 220px 1fr 60px;
+    grid-template-columns:
 
-    gap: var(--space-4);
+        220px
+
+        1fr
+
+        60px;
+
+    gap: 18px;
 
     align-items: center;
+
+    margin-bottom: 18px;
 
 }
 
 .progress {
 
-    height: 6px;
+    height: 8px;
 
     overflow: hidden;
 
-    border-radius: var(--radius-pill);
+    border-radius: 999px;
 
-    background: rgba(255,255,255,.08);
+    background:
+
+        rgba(255,255,255,.05);
 
 }
 
 .progress-fill {
 
-    width: 100%;
+    width: 0%;
 
     height: 100%;
 
-    background: var(--color-primary);
+    border-radius: inherit;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #7c5cff,
+
+            #5b9dff
+
+        );
 
 }
 
@@ -410,17 +464,35 @@
 
 .intro-button {
 
-    width: 180px;
+    margin-top: 42px;
 
-    height: 54px;
+    width: 220px;
 
-    border-radius: var(--radius-md);
+    height: 56px;
 
-    background: var(--color-primary);
+    border-radius: 14px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #7c5cff,
+
+            #5b9dff
+
+        );
 
     color: white;
 
     font-weight: 600;
+
+    letter-spacing: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
 
 }
 
@@ -473,5 +545,13 @@
     top: 24px;
 
     right: 24px;
+
+}
+
+.intro-button.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
 
 }
