@@ -238,7 +238,7 @@
 
 .hero h1 {
 
-    font-size: clamp(2.8rem,5vw,4rem);
+    font-size: clamp(2.2rem,5vw,3.2rem);
 
     font-weight: 700;
 
@@ -248,11 +248,11 @@
 
 .hero-description {
 
-    max-width: 480px;
+    max-width: 340px;
 
     color: rgba(255,255,255,.70);
 
-    font-size: 17px;
+    font-size:15px;
 
     line-height: 1.8;
 
@@ -276,9 +276,9 @@
 
 .social-button {
 
-    width: 54px;
+    width: 48px;
 
-    height: 54px;
+    height: 48px;
 
     border-radius: 50%;
 
@@ -316,9 +316,9 @@
 
 .social-button svg {
 
-    width: 22px;
+    width: 20px;
 
-    height: 22px;
+    height: 20px;
 
     stroke-width: 1.8;
 
@@ -352,7 +352,7 @@
 
 .nav-button {
 
-    height: 60px;
+    height: 52px;
 
     border-radius: 16px;
 
