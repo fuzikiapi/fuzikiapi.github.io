@@ -36,6 +36,8 @@
 
         cacheDOM();
 
+        loadProfile();
+
         bindEvents();
 
         buildIntro();
@@ -71,6 +73,25 @@
             document.querySelectorAll(".close-modal");
 
     }
+
+   function loadProfile() {
+
+    document
+        .getElementById("profileName")
+        .textContent =
+        CONFIG.profile.name;
+
+    document
+        .getElementById("profileTagline")
+        .textContent =
+        CONFIG.profile.tagline;
+
+    document
+        .getElementById("profileAvatar")
+        .src =
+        CONFIG.profile.avatar;
+
+}
 
     function bindEvents() {
 
