@@ -3,456 +3,415 @@
 
 <head>
 
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
-    />
+    >
 
-    <title>KF Platform</title>
+    <title>Kadu Fuziki</title>
 
     <meta
         name="description"
-        content="Kadu Fuziki • Designer, Creator, Developer in Progress."
-    />
-
-    <meta
-        name="theme-color"
-        content="#07070a"
-    />
-
-    <!-- Fonts -->
+        content="KF Platform"
+    >
 
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
-    />
+    >
 
     <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
         crossorigin
-    />
+    >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
-    />
-
-    <!-- CSS -->
+    >
 
     <link
         rel="stylesheet"
         href="css/variables.css"
-    />
+    >
 
     <link
         rel="stylesheet"
         href="css/base.css"
-    />
+    >
 
     <link
         rel="stylesheet"
         href="css/layout.css"
-    />
+    >
 
     <link
         rel="stylesheet"
         href="css/components.css"
-    />
-
-    <link
-        rel="stylesheet" 
-        href="css/backgrounds.css"
-    />
-
-    <link
-        rel="stylesheet"
-        href="css/animations.css"
-    />
+    >
 
     <link
         rel="stylesheet"
         href="css/responsive.css"
-    />
+    >
 
 </head>
 
 <body>
 
-    <!-- ===================================== -->
-    <!-- BACKGROUND -->
-    <!-- ===================================== -->
+    <div id="intro">
 
-    <canvas id="aurora-canvas"></canvas>
+    <div class="intro-container">
 
-    <svg
-        width="0"
-        height="0"
-    >
-        <filter id="liquid">
-            <feGaussianBlur
-                in="SourceGraphic"
-                stdDeviation="18"
-                result="blur"
-            />
-            <feColorMatrix
-                in="blur"
-                mode="matrix"
-                values="
-                1 0 0 0 0
-                0 1 0 0 0
-                0 0 1 0 0
-                0 0 0 35 -15"
-            />
-        </filter>
-    </svg>
+        <h1>
 
-    <div class="noise"></div>
+            INICIANDO KF PLATFORM...
 
-    <div class="gradient-overlay"></div>
+        </h1>
 
-    <!-- ===================================== -->
-    <!-- CURSOR -->
-    <!-- ===================================== -->
+        <div class="intro-item">
 
-    <div class="cursor"></div>
+            <span>Carregando módulos...</span>
 
-    <!-- ===================================== -->
-    <!-- HEADER -->
-    <!-- ===================================== -->
+            <div class="progress">
 
-    <header class="header">
+                <div class="progress-fill"></div>
 
-        <div class="container header-content">
+            </div>
 
-            <a
-                href="#hero"
-                class="logo"
-            >
-                KF
-            </a>
+            <strong>100%</strong>
 
-            <nav class="navigation">
+        </div>
 
-                <a href="#hero" data-i18n="nav.home"></a>
+        <div class="intro-item">
 
-                <a href="#about" data-i18n="nav.about"></a>
+            <span>Checando GitHub API...</span>
 
-                <a href="#projects" data-i18n="nav.projects"></a>
+            <div class="progress">
 
-                <a href="#github" data-i18n="nav.github"></a>
+                <div class="progress-fill"></div>
 
-                <a href="#spotify" data-i18n="nav.spotify"></a>
+            </div>
 
-                <a href="#contact" data-i18n="nav.contact"></a>
+            <strong>OK</strong>
 
-            </nav>
+        </div>
 
-            <div class="header-actions">
+        <div class="intro-item">
 
-                <button
-                    id="languageButton"
-                    class="lang-btn"
-                >
-                    PT
-                </button>
+            <span>Checando Discord Gateway...</span>
+
+            <div class="progress">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+            <strong>OK</strong>
+
+        </div>
+
+        <div class="intro-item">
+
+            <span>Carregando Interface...</span>
+
+            <div class="progress">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+            <strong>OK</strong>
+
+        </div>
+
+        <div class="intro-item">
+
+            <span>Carregando Recursos...</span>
+
+            <div class="progress">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+            <strong>OK</strong>
+
+        </div>
+
+        <div class="intro-item">
+
+            <span>Inicializando Componentes...</span>
+
+            <div class="progress">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+            <strong>OK</strong>
+
+        </div>
+
+        <p>
+
+            Bem-vindo ao HUB.
+
+        </p>
+
+        <button id="enterButton">
+
+            ENTRAR
+
+        </button>
+
+    </div>
+
+</div>
+
+    <main id="app">
+
+    <header class="hero">
+
+        <div class="hero-top">
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Offline
+
+            </div>
+
+            <div class="clock">
+
+                UTC-3 --:--
 
             </div>
 
         </div>
+
+        <div class="avatar">
+
+            <img
+                src="assets/images/avatar.png"
+                alt="Kadu Fuziki"
+            >
+
+        </div>
+
+        <h1>
+
+            Kadu Fuziki
+
+        </h1>
+
+        <p>
+
+            Creating digital experiences.
+
+        </p>
+
+                <div class="socials">
+
+            <button
+                class="social-button"
+                aria-label="GitHub"
+            >
+
+                <img
+                    src="assets/icons/github.svg"
+                    alt="GitHub"
+                >
+
+            </button>
+
+            <button
+                class="social-button"
+                aria-label="Instagram"
+            >
+
+                <img
+                    src="assets/icons/instagram.svg"
+                    alt="Instagram"
+                >
+
+            </button>
+
+            <button
+                class="social-button"
+                aria-label="Discord"
+            >
+
+                <img
+                    src="assets/icons/discord.svg"
+                    alt="Discord"
+                >
+
+            </button>
+
+            <button
+                class="social-button"
+                aria-label="Riot"
+            >
+
+                <img
+                    src="assets/icons/riot.svg"
+                    alt="Riot"
+                >
+
+            </button>
+
+            <button
+                class="social-button"
+                aria-label="YouTube"
+            >
+
+                <img
+                    src="assets/icons/youtube.svg"
+                    alt="YouTube"
+                >
+
+            </button>
+
+            <button
+                class="social-button"
+                aria-label="Spotify"
+            >
+
+                <img
+                    src="assets/icons/spotify.svg"
+                    alt="Spotify"
+                >
+
+            </button>
+
+        </div>
+
+        <nav class="navigation">
+
+            <button
+                class="nav-button"
+                data-modal="projects"
+            >
+
+                Projetos
+
+            </button>
+
+            <button
+                class="nav-button"
+                data-modal="about"
+            >
+
+                Sobre
+
+            </button>
+
+            <button
+                class="nav-button"
+                data-modal="contact"
+            >
+
+                Contato
+
+            </button>
+
+        </nav>
 
     </header>
 
-    <!-- ===================================== -->
-    <!-- HERO -->
-    <!-- ===================================== -->
+</main>
 
-    <main>
+    <div
+    class="modal"
+    id="projectsModal"
+>
 
-        <section
-            id="hero"
-            class="hero section"
-        >
+    <div class="modal-content">
 
-            <div class="container hero-grid">
+        <button class="close-modal">
 
-                <div class="hero-left">
+            ×
 
-                    <span
-                        class="eyebrow"
-                        data-i18n="hero.badge"
-                    ></span>
+        </button>
 
-                    <h1 data-i18n="hero.title"></h1>
+        <h2>
 
-                    <p data-i18n="hero.description"></p>
+            Projetos
 
-                    <div class="hero-buttons">
+        </h2>
 
-                        <a
-                            href="#projects"
-                            class="button primary"
-                            data-i18n="hero.projects"
-                        ></a>
+        <div id="projectsContainer"></div>
 
-                        <a
-                            href="#contact"
-                            class="button secondary"
-                            data-i18n="hero.contact"
-                        ></a>
+    </div>
 
-                    </div>
+</div>
 
-                </div>
+<div
+    class="modal"
+    id="aboutModal"
+>
 
-                <div class="hero-right">
+    <div class="modal-content">
 
-                    <div class="hero-card">
+        <button class="close-modal">
 
-                        <img
-                         src="assets/images/avatar.png"
-                            alt="Kadu Fuziki"
-                        />
+            ×
 
-                    </div>
+        </button>
 
-                </div>
+        <h2>
 
-            </div>
+            Sobre Mim
 
-        </section>
+        </h2>
 
-        <!-- ===================================== -->
-        <!-- ABOUT -->
-        <!-- ===================================== -->
+        <div id="aboutContainer">
 
-        <section
-            id="about"
-            class="section"
-        >
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span data-i18n="about.badge"></span>
-
-                    <h2 data-i18n="about.title"></h2>
-
-                </div>
-
-                <div class="about-grid">
-
-                    <div class="glass-card">
-
-                        <h3 data-i18n="about.who"></h3>
-
-                        <p id="aboutDescription"></p>
-
-                    </div>
-
-                    <div class="glass-card">
-
-                        <h3 data-i18n="about.skills"></h3>
-
-                        <div
-                            class="skills"
-                            id="skillsContainer"
-                        ></div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ===================================== -->
-        <!-- PROJECTS -->
-        <!-- ===================================== -->
-
-        <section
-            id="projects"
-            class="section"
-        >
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span data-i18n="projects.badge"></span>
-
-                    <h2 data-i18n="projects.title"></h2>
-
-                </div>
-
-                <div
-                    id="projectsGrid"
-                    class="projects-grid"
-                ></div>
-
-            </div>
-
-        </section>
-
-        <!-- ===================================== -->
-        <!-- GITHUB -->
-        <!-- ===================================== -->
-
-        <section
-            id="github"
-            class="section"
-        >
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span>GitHub</span>
-
-                    <h2 data-i18n="github.title"></h2>
-
-                </div>
-
-                <div
-                    id="githubContainer"
-                    class="github-grid"
-                ></div>
-
-            </div>
-
-        </section>
-
-        <!-- ===================================== -->
-        <!-- SPOTIFY -->
-        <!-- ===================================== -->
-
-        <section
-            id="spotify"
-            class="section"
-        >
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span>Spotify</span>
-
-                    <h2 data-i18n="spotify.title"></h2>
-
-                </div>
-
-                <div
-                    id="spotifyContainer"
-                    class="spotify-card"
-                ></div>
-
-            </div>
-
-        </section>
-
-        <!-- ===================================== -->
-        <!-- STORE -->
-        <!-- ===================================== -->
-
-        <section
-            id="store"
-            class="section"
-        >
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span>Store</span>
-
-                    <h2 data-i18n="store.title"></h2>
-
-                </div>
-
-                <div class="glass-card future-card">
-
-                    <p data-i18n="store.description"></p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ===================================== -->
-        <!-- CONTACT -->
-        <!-- ===================================== -->
-
-        <section
-            id="contact"
-            class="section"
-        >
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span data-i18n="contact.badge"></span>
-
-                    <h2 data-i18n="contact.title"></h2>
-
-                </div>
-
-                <div
-                    id="socialLinks"
-                    class="social-grid"
-                ></div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- ===================================== -->
-    <!-- FOOTER -->
-    <!-- ===================================== -->
-
-    <footer>
-
-        <div class="container footer-content">
-
-            <span>
-                © 2026 Kadu Fuziki
-            </span>
-
-            <span>
-                KF Platform
-            </span>
+            <!-- Conteúdo depois -->
 
         </div>
 
-    </footer>
+    </div>
 
-    <!-- ===================================== -->
-    <!-- JS -->
-    <!-- ===================================== -->
+</div>
+
+<div
+    class="modal"
+    id="contactModal"
+>
+
+    <div class="modal-content">
+
+        <button class="close-modal">
+
+            ×
+
+        </button>
+
+        <h2>
+
+            Contato
+
+        </h2>
+
+        <div id="contactContainer">
+
+            <!-- Conteúdo depois -->
+
+        </div>
+
+    </div>
+
+</div>
 
     <script src="js/core.js"></script>
-    
-    <script src="js/background.js"></script>
 
-    <script src="js/animations.js"></script>
-
-    <script src="js/language.js"></script>
-
-    <script src="js/github.js"></script>
-
-    <script src="js/spotify.js"></script>
-
-    <script src="js/discord.js"></script>
-
-    <script src="js/cursor.js"></script>
-
-    <script src="js/app.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 
