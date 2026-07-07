@@ -338,7 +338,7 @@ blurCtx.setTransform(
 
     blurCtx.globalCompositeOperation = "screen";
 
-    blurCtx.globalAlpha = CONFIG.opacity;
+    blurCtx.globalAlpha = 1;
 
     for (const blob of blobs) {
 
