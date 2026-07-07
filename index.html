@@ -10,12 +10,19 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Kadu Fuziki</title>
-
     <meta
         name="description"
-        content="KF Platform"
+        content="KF Platform - Bio Platform by Kadu Fuziki."
     >
+
+    <meta
+        name="theme-color"
+        content="#0B0B0F"
+    >
+
+    <title>Kadu Fuziki</title>
+
+    <!-- Fonts -->
 
     <link
         rel="preconnect"
@@ -29,9 +36,11 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
+
+    <!-- CSS -->
 
     <link
         rel="stylesheet"
@@ -62,356 +71,468 @@
 
 <body>
 
-    <div id="intro">
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
 
-    <div class="intro-container">
+    <section
+        id="intro"
+        class="intro"
+    >
 
-        <h1>
+        <div class="intro-container">
 
-            INICIANDO KF PLATFORM...
+            <h1 class="intro-title">
 
-        </h1>
+                INICIANDO KF PLATFORM...
 
-        <div class="intro-item">
+            </h1>
 
-            <span>Carregando módulos...</span>
+            <div class="intro-list">
 
-            <div class="progress">
+                <div class="intro-item">
 
-                <div class="progress-fill"></div>
+                    <span>
+
+                        Carregando módulos...
+
+                    </span>
+
+                    <div class="progress">
+
+                        <div class="progress-fill"></div>
+
+                    </div>
+
+                    <strong>
+
+                        100%
+
+                    </strong>
+
+                </div>
+
+                <div class="intro-item">
+
+                    <span>
+
+                        Checando GitHub API...
+
+                    </span>
+
+                    <div class="progress">
+
+                        <div class="progress-fill"></div>
+
+                    </div>
+
+                    <strong>
+
+                        OK
+
+                    </strong>
+
+                </div>
+
+                <div class="intro-item">
+
+                    <span>
+
+                        Checando Discord Gateway...
+
+                    </span>
+
+                    <div class="progress">
+
+                        <div class="progress-fill"></div>
+
+                    </div>
+
+                    <strong>
+
+                        OK
+
+                    </strong>
+
+                </div>
+
+                <div class="intro-item">
+
+                    <span>
+
+                        Carregando Interface...
+
+                    </span>
+
+                    <div class="progress">
+
+                        <div class="progress-fill"></div>
+
+                    </div>
+
+                    <strong>
+
+                        OK
+
+                    </strong>
+
+                </div>
+
+                <div class="intro-item">
+
+                    <span>
+
+                        Carregando Recursos...
+
+                    </span>
+
+                    <div class="progress">
+
+                        <div class="progress-fill"></div>
+
+                    </div>
+
+                    <strong>
+
+                        OK
+
+                    </strong>
+
+                </div>
+
+                <div class="intro-item">
+
+                    <span>
+
+                        Inicializando Componentes...
+
+                    </span>
+
+                    <div class="progress">
+
+                        <div class="progress-fill"></div>
+
+                    </div>
+
+                    <strong>
+
+                        OK
+
+                    </strong>
+
+                </div>
 
             </div>
 
-            <strong>100%</strong>
+            <p class="intro-message">
 
-        </div>
+                Bem-vindo ao HUB.
 
-        <div class="intro-item">
-
-            <span>Checando GitHub API...</span>
-
-            <div class="progress">
-
-                <div class="progress-fill"></div>
-
-            </div>
-
-            <strong>OK</strong>
-
-        </div>
-
-        <div class="intro-item">
-
-            <span>Checando Discord Gateway...</span>
-
-            <div class="progress">
-
-                <div class="progress-fill"></div>
-
-            </div>
-
-            <strong>OK</strong>
-
-        </div>
-
-        <div class="intro-item">
-
-            <span>Carregando Interface...</span>
-
-            <div class="progress">
-
-                <div class="progress-fill"></div>
-
-            </div>
-
-            <strong>OK</strong>
-
-        </div>
-
-        <div class="intro-item">
-
-            <span>Carregando Recursos...</span>
-
-            <div class="progress">
-
-                <div class="progress-fill"></div>
-
-            </div>
-
-            <strong>OK</strong>
-
-        </div>
-
-        <div class="intro-item">
-
-            <span>Inicializando Componentes...</span>
-
-            <div class="progress">
-
-                <div class="progress-fill"></div>
-
-            </div>
-
-            <strong>OK</strong>
-
-        </div>
-
-        <p>
-
-            Bem-vindo ao HUB.
-
-        </p>
-
-        <button id="enterButton">
-
-            ENTRAR
-
-        </button>
-
-    </div>
-
-</div>
-
-    <main id="app">
-
-    <header class="hero">
-
-        <div class="hero-top">
-
-            <div class="status">
-
-                <span class="status-dot"></span>
-
-                Offline
-
-            </div>
-
-            <div class="clock">
-
-                UTC-3 --:--
-
-            </div>
-
-        </div>
-
-        <div class="avatar">
-
-            <img
-                src="assets/images/avatar.png"
-                alt="Kadu Fuziki"
-            >
-
-        </div>
-
-        <h1>
-
-            Kadu Fuziki
-
-        </h1>
-
-        <p>
-
-            Creating digital experiences.
-
-        </p>
-
-                <div class="socials">
+            </p>
 
             <button
-                class="social-button"
-                aria-label="GitHub"
+                id="enterButton"
+                class="intro-button"
             >
 
-                <img
-                    src="assets/icons/github.svg"
-                    alt="GitHub"
-                >
-
-            </button>
-
-            <button
-                class="social-button"
-                aria-label="Instagram"
-            >
-
-                <img
-                    src="assets/icons/instagram.svg"
-                    alt="Instagram"
-                >
-
-            </button>
-
-            <button
-                class="social-button"
-                aria-label="Discord"
-            >
-
-                <img
-                    src="assets/icons/discord.svg"
-                    alt="Discord"
-                >
-
-            </button>
-
-            <button
-                class="social-button"
-                aria-label="Riot"
-            >
-
-                <img
-                    src="assets/icons/riot.svg"
-                    alt="Riot"
-                >
-
-            </button>
-
-            <button
-                class="social-button"
-                aria-label="YouTube"
-            >
-
-                <img
-                    src="assets/icons/youtube.svg"
-                    alt="YouTube"
-                >
-
-            </button>
-
-            <button
-                class="social-button"
-                aria-label="Spotify"
-            >
-
-                <img
-                    src="assets/icons/spotify.svg"
-                    alt="Spotify"
-                >
+                ENTRAR
 
             </button>
 
         </div>
 
-        <nav class="navigation">
+    </section>
+
+    <!-- =====================================================
+         APPLICATION
+    ====================================================== -->
+
+    <main
+        id="app"
+        hidden
+    >
+
+        <div class="container">
+
+            <header class="hero">
+
+                <div class="hero-top">
+
+                    <div
+                        class="status"
+                        id="discordStatus"
+                    >
+
+                        <span class="status-dot"></span>
+
+                        Offline
+
+                    </div>
+
+                    <div
+                        class="clock"
+                        id="clock"
+                    >
+
+                        UTC-3 --:--
+
+                    </div>
+
+                </div>
+
+                <div class="avatar">
+
+                    <img
+                        src="assets/images/avatar/avatar.png"
+                        alt="Kadu Fuziki"
+                    >
+
+                </div>
+
+                <h1>
+
+                    Kadu Fuziki
+
+                </h1>
+
+                <p class="hero-description">
+
+                    Creating digital experiences.
+
+                </p>
+
+                                <div class="socials">
+
+                    <a
+                        class="social-button"
+                        id="githubLink"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                    >
+
+                        <img
+                            src="assets/icons/github.svg"
+                            alt="GitHub"
+                        >
+
+                    </a>
+
+                    <a
+                        class="social-button"
+                        id="instagramLink"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                    >
+
+                        <img
+                            src="assets/icons/instagram.svg"
+                            alt="Instagram"
+                        >
+
+                    </a>
+
+                    <a
+                        class="social-button"
+                        id="discordLink"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Discord"
+                    >
+
+                        <img
+                            src="assets/icons/discord.svg"
+                            alt="Discord"
+                        >
+
+                    </a>
+
+                    <a
+                        class="social-button"
+                        id="riotLink"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Riot Games"
+                    >
+
+                        <img
+                            src="assets/icons/riot.svg"
+                            alt="Riot Games"
+                        >
+
+                    </a>
+
+                    <a
+                        class="social-button"
+                        id="youtubeLink"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="YouTube"
+                    >
+
+                        <img
+                            src="assets/icons/youtube.svg"
+                            alt="YouTube"
+                        >
+
+                    </a>
+
+                    <a
+                        class="social-button"
+                        id="spotifyLink"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Spotify"
+                    >
+
+                        <img
+                            src="assets/icons/spotify.svg"
+                            alt="Spotify"
+                        >
+
+                    </a>
+
+                </div>
+
+                <nav class="navigation">
+
+                    <button
+                        class="nav-button"
+                        data-modal="projects"
+                    >
+
+                        Projetos
+
+                    </button>
+
+                    <button
+                        class="nav-button"
+                        data-modal="about"
+                    >
+
+                        Sobre
+
+                    </button>
+
+                    <button
+                        class="nav-button"
+                        data-modal="contact"
+                    >
+
+                        Contato
+
+                    </button>
+
+                </nav>
+
+            </header>
+
+        </div>
+
+    </main>
+
+    <!-- =====================================================
+         MODALS
+    ====================================================== -->
+
+    <section
+        id="projectsModal"
+        class="modal"
+    >
+
+        <div class="modal-content">
 
             <button
-                class="nav-button"
-                data-modal="projects"
+                class="close-modal"
+                aria-label="Fechar"
             >
+
+                ×
+
+            </button>
+
+            <h2>
 
                 Projetos
 
-            </button>
+            </h2>
+
+            <div id="projectsContainer"></div>
+
+        </div>
+
+    </section>
+
+    <section
+        id="aboutModal"
+        class="modal"
+    >
+
+        <div class="modal-content">
 
             <button
-                class="nav-button"
-                data-modal="about"
+                class="close-modal"
+                aria-label="Fechar"
             >
 
-                Sobre
+                ×
 
             </button>
 
+            <h2>
+
+                Sobre Mim
+
+            </h2>
+
+            <div id="aboutContainer"></div>
+
+        </div>
+
+    </section>
+
+    <section
+        id="contactModal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
             <button
-                class="nav-button"
-                data-modal="contact"
+                class="close-modal"
+                aria-label="Fechar"
             >
+
+                ×
+
+            </button>
+
+            <h2>
 
                 Contato
 
-            </button>
+            </h2>
 
-        </nav>
-
-    </header>
-
-</main>
-
-    <div
-    class="modal"
-    id="projectsModal"
->
-
-    <div class="modal-content">
-
-        <button class="close-modal">
-
-            ×
-
-        </button>
-
-        <h2>
-
-            Projetos
-
-        </h2>
-
-        <div id="projectsContainer"></div>
-
-    </div>
-
-</div>
-
-<div
-    class="modal"
-    id="aboutModal"
->
-
-    <div class="modal-content">
-
-        <button class="close-modal">
-
-            ×
-
-        </button>
-
-        <h2>
-
-            Sobre Mim
-
-        </h2>
-
-        <div id="aboutContainer">
-
-            <!-- Conteúdo depois -->
+            <div id="contactContainer"></div>
 
         </div>
 
-    </div>
+    </section>
 
-</div>
-
-<div
-    class="modal"
-    id="contactModal"
->
-
-    <div class="modal-content">
-
-        <button class="close-modal">
-
-            ×
-
-        </button>
-
-        <h2>
-
-            Contato
-
-        </h2>
-
-        <div id="contactContainer">
-
-            <!-- Conteúdo depois -->
-
-        </div>
-
-    </div>
-
-</div>
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
     <script src="js/core.js"></script>
 
-<script src="js/app.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 
