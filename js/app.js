@@ -6,27 +6,31 @@
 (() => {
     "use strict";
 
-    const App = {
+    const DOM = {};
 
-        intro: null,
+    const INTRO_STEPS = [
 
-        app: null,
+        "Carregando módulos...",
 
-        enterButton: null,
+        "Checando GitHub API...",
 
-        clock: null,
+        "Checando Discord Gateway...",
 
-        modals: [],
+        "Carregando Interface...",
 
-        navButtons: [],
+        "Carregando Recursos...",
 
-        closeButtons: []
+        "Inicializando Componentes..."
 
-    };
+    ];
 
-    /* ======================================================
-       INIT
-       ====================================================== */
+    document.addEventListener(
+
+        "DOMContentLoaded",
+
+        init
+
+    );
 
     function init() {
 
@@ -34,46 +38,43 @@
 
         bindEvents();
 
+        buildIntro();
+
         startClock();
 
     }
 
-    /* ======================================================
-       DOM
-       ====================================================== */
-
     function cacheDOM() {
 
-        App.intro =
+        DOM.intro =
             document.getElementById("intro");
 
-        App.app =
+        DOM.app =
             document.getElementById("app");
 
-        App.enterButton =
+        DOM.enter =
             document.getElementById("enterButton");
 
-        App.clock =
+        DOM.clock =
             document.getElementById("clock");
 
-        App.modals =
+        DOM.items =
+            document.querySelectorAll(".intro-item");
+
+        DOM.modals =
             document.querySelectorAll(".modal");
 
-        App.navButtons =
+        DOM.navButtons =
             document.querySelectorAll(".nav-button");
 
-        App.closeButtons =
+        DOM.closeButtons =
             document.querySelectorAll(".close-modal");
 
     }
 
-    /* ======================================================
-       EVENTS
-       ====================================================== */
-
     function bindEvents() {
 
-        App.enterButton.addEventListener(
+        DOM.enter.addEventListener(
 
             "click",
 
@@ -81,7 +82,7 @@
 
         );
 
-        App.navButtons.forEach((button) => {
+        DOM.navButtons.forEach(button => {
 
             button.addEventListener(
 
@@ -93,29 +94,33 @@
 
         });
 
-        App.closeButtons.forEach((button) => {
+        DOM.closeButtons.forEach(button => {
 
             button.addEventListener(
 
                 "click",
 
-                closeAllModals
+                closeModals
 
             );
 
         });
 
-        App.modals.forEach((modal) => {
+        DOM.modals.forEach(modal => {
 
             modal.addEventListener(
 
                 "click",
 
-                (event) => {
+                event => {
 
-                    if (event.target === modal) {
+                    if (
 
-                        closeAllModals();
+                        event.target === modal
+
+                    ) {
+
+                        closeModals();
 
                     }
 
@@ -129,11 +134,15 @@
 
             "keydown",
 
-            (event) => {
+            event => {
 
-                if (event.key === "Escape") {
+                if (
 
-                    closeAllModals();
+                    event.key === "Escape"
+
+                ) {
+
+                    closeModals();
 
                 }
 
@@ -143,23 +152,155 @@
 
     }
 
-    /* ======================================================
+     /* ======================================================
        INTRO
        ====================================================== */
 
+    async function buildIntro() {
+
+        DOM.enter.style.display = "none";
+
+        for (const item of DOM.items) {
+
+            const fill =
+                item.querySelector(".progress-fill");
+
+            const status =
+                item.querySelector("strong");
+
+            fill.style.width = "0%";
+
+            status.textContent = "...";
+
+        }
+
+        for (const item of DOM.items) {
+
+            const fill =
+                item.querySelector(".progress-fill");
+
+            const status =
+                item.querySelector("strong");
+
+            await animateProgress(fill);
+
+            status.textContent = "OK";
+
+            await wait(120);
+
+        }
+
+        DOM.enter.style.display = "inline-flex";
+
+        DOM.enter.animate(
+
+            [
+
+                {
+
+                    opacity: 0,
+
+                    transform: "translateY(10px)"
+
+                },
+
+                {
+
+                    opacity: 1,
+
+                    transform: "translateY(0)"
+
+                }
+
+            ],
+
+            {
+
+                duration: 500,
+
+                easing: "ease"
+
+            }
+
+        );
+
+    }
+
+    function animateProgress(fill) {
+
+        return new Promise(resolve => {
+
+            let progress = 0;
+
+            const interval = setInterval(() => {
+
+                progress += 4;
+
+                fill.style.width = progress + "%";
+
+                if (progress >= 100) {
+
+                    clearInterval(interval);
+
+                    resolve();
+
+                }
+
+            }, 12);
+
+        });
+
+    }
+
+    function wait(ms) {
+
+        return new Promise(resolve => {
+
+            setTimeout(resolve, ms);
+
+        });
+
+    }
+
     function enterPlatform() {
 
-        App.intro.style.opacity = "0";
+        DOM.intro.animate(
 
-        App.intro.style.pointerEvents = "none";
+            [
+
+                {
+
+                    opacity: 1
+
+                },
+
+                {
+
+                    opacity: 0
+
+                }
+
+            ],
+
+            {
+
+                duration: 700,
+
+                easing: "ease",
+
+                fill: "forwards"
+
+            }
+
+        );
 
         setTimeout(() => {
 
-            App.intro.remove();
+            DOM.intro.remove();
 
-            App.app.hidden = false;
+            DOM.app.hidden = false;
 
-            App.app.animate(
+            DOM.app.animate(
 
                 [
 
@@ -167,8 +308,7 @@
 
                         opacity: 0,
 
-                        transform:
-                            "translateY(20px)"
+                        transform: "translateY(20px)"
 
                     },
 
@@ -176,8 +316,7 @@
 
                         opacity: 1,
 
-                        transform:
-                            "translateY(0)"
+                        transform: "translateY(0)"
 
                     }
 
@@ -185,10 +324,9 @@
 
                 {
 
-                    duration: 600,
+                    duration: 700,
 
-                    easing:
-                        "ease-out",
+                    easing: "ease",
 
                     fill: "forwards"
 
@@ -196,106 +334,6 @@
 
             );
 
-            window.KF.state.introFinished = true;
-
-        }, 600);
+        }, 700);
 
     }
-
-    /* ======================================================
-       MODALS
-       ====================================================== */
-
-    function openModal(event) {
-
-        const modalName =
-
-            event.currentTarget.dataset.modal;
-
-        closeAllModals();
-
-        document
-
-            .getElementById(
-
-                modalName + "Modal"
-
-            )
-
-            ?.classList.add("active");
-
-    }
-
-    function closeAllModals() {
-
-        App.modals.forEach((modal) => {
-
-            modal.classList.remove("active");
-
-        });
-
-    }
-
-    /* ======================================================
-       CLOCK
-       ====================================================== */
-
-    function updateClock() {
-
-        const now = new Date();
-
-        const formatter =
-
-            new Intl.DateTimeFormat(
-
-                "pt-BR",
-
-                {
-
-                    timeZone:
-
-                        "America/Sao_Paulo",
-
-                    hour: "2-digit",
-
-                    minute: "2-digit"
-
-                }
-
-            );
-
-        App.clock.textContent =
-
-            "UTC-3 " +
-
-            formatter.format(now);
-
-    }
-
-    function startClock() {
-
-        updateClock();
-
-        setInterval(
-
-            updateClock,
-
-            1000
-
-        );
-
-    }
-
-    /* ======================================================
-       START
-       ====================================================== */
-
-    document.addEventListener(
-
-        "DOMContentLoaded",
-
-        init
-
-    );
-
-})();
