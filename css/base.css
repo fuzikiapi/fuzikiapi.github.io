@@ -1,6 +1,6 @@
 /* ==========================================================
    KF Platform
-   Base Styles
+   Base
    ========================================================== */
 
 /* ==========================================================
@@ -10,32 +10,51 @@
 *,
 *::before,
 *::after {
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
+
+/* ==========================================================
+   HTML
+   ========================================================== */
 
 html {
+
+    font-size: 16px;
+
     scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
+
+    -webkit-font-smoothing: antialiased;
+
+    -moz-osx-font-smoothing: grayscale;
+
 }
 
+/* ==========================================================
+   BODY
+   ========================================================== */
+
 body {
+
     min-height: 100vh;
-
-    background: var(--color-background);
-    color: var(--color-text);
-
-    font-family: var(--font-primary);
-    font-size: var(--fs-body);
-    font-weight: var(--font-weight-regular);
-    line-height: var(--lh-body);
 
     overflow-x: hidden;
 
+    font-family: var(--font-family);
+
+    font-size: var(--font-size-md);
+
+    color: var(--color-text);
+
+    background: var(--gradient-background);
+
+    line-height: 1.6;
+
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+
 }
 
 /* ==========================================================
@@ -43,13 +62,11 @@ body {
    ========================================================== */
 
 ::selection {
-    background: rgba(110, 231, 247, 0.28);
-    color: var(--color-white);
-}
 
-::-moz-selection {
-    background: rgba(110, 231, 247, 0.28);
-    color: var(--color-white);
+    background: var(--color-primary);
+
+    color: white;
+
 }
 
 /* ==========================================================
@@ -57,47 +74,57 @@ body {
    ========================================================== */
 
 ::-webkit-scrollbar {
-    width: 10px;
+
+    width: 8px;
+
 }
 
 ::-webkit-scrollbar-track {
-    background: #050507;
+
+    background: transparent;
+
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, .18);
-    border-radius: 999px;
+
+    background: rgba(255,255,255,.12);
+
+    border-radius: var(--radius-pill);
+
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, .30);
+
+    background: rgba(255,255,255,.22);
+
 }
 
 /* Firefox */
 
 * {
+
     scrollbar-width: thin;
+
     scrollbar-color:
-        rgba(255,255,255,.20)
-        #050507;
+        rgba(255,255,255,.15)
+        transparent;
+
 }
 
 /* ==========================================================
-   MEDIA
+   IMAGES
    ========================================================== */
 
-img,
-picture,
-svg,
-canvas,
-video {
-    display: block;
-    max-width: 100%;
-}
-
 img {
+
+    display: block;
+
+    max-width: 100%;
+
     user-select: none;
+
     -webkit-user-drag: none;
+
 }
 
 /* ==========================================================
@@ -105,14 +132,11 @@ img {
    ========================================================== */
 
 a {
-    color: inherit;
-    text-decoration: none;
-}
 
-a:focus-visible {
-    outline: 2px solid var(--aurora-cyan);
-    outline-offset: 4px;
-    border-radius: 8px;
+    color: inherit;
+
+    text-decoration: none;
+
 }
 
 /* ==========================================================
@@ -120,40 +144,49 @@ a:focus-visible {
    ========================================================== */
 
 button {
+
     border: none;
+
     outline: none;
+
     background: none;
 
     font: inherit;
+
     color: inherit;
 
     cursor: pointer;
+
 }
 
 /* ==========================================================
-   FORM
-   ========================================================== */
-
-input,
-textarea,
-select {
-    font: inherit;
-    color: inherit;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-}
-
-/* ==========================================================
-   LIST
+   LISTS
    ========================================================== */
 
 ul,
 ol {
+
     list-style: none;
+
+}
+
+/* ==========================================================
+   INPUTS
+   ========================================================== */
+
+input,
+textarea {
+
+    border: none;
+
+    outline: none;
+
+    font: inherit;
+
+    color: inherit;
+
+    background: transparent;
+
 }
 
 /* ==========================================================
@@ -166,215 +199,93 @@ h3,
 h4,
 h5,
 h6 {
-    line-height: var(--lh-title);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--tracking-title);
+
+    font-weight: var(--font-weight-semibold);
+
+    line-height: 1.15;
+
 }
 
-h1 {
-    font-size: var(--fs-hero);
-}
-
-h2 {
-    font-size: var(--fs-h2);
-}
-
-h3 {
-    font-size: var(--fs-h3);
-}
+/* ==========================================================
+   PARAGRAPHS
+   ========================================================== */
 
 p {
-    color: var(--color-text-soft);
-}
 
-/* ==========================================================
-   CONTAINER
-   ========================================================== */
-
-.container {
-    width: min(
-        calc(100% - 48px),
-        var(--container)
-    );
-
-    margin-inline: auto;
-}
-
-/* ==========================================================
-   SECTION
-   ========================================================== */
-
-.section {
-    position: relative;
-    padding-block: var(--section-spacing);
-}
-
-/* ==========================================================
-   TEXT HELPERS
-   ========================================================== */
-
-.eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-
-    margin-bottom: 1rem;
-
-    font-size: .78rem;
-    font-weight: 600;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-
-    color: var(--aurora-cyan);
-}
-
-.section-title {
-    display: flex;
-    flex-direction: column;
-
-    gap: 14px;
-
-    margin-bottom: 70px;
-}
-
-.section-title span {
-    color: var(--aurora-cyan);
-
-    font-size: .82rem;
-    font-weight: 700;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-}
-
-.section-title h2 {
-    max-width: 700px;
-}
-
-/* ==========================================================
-   GLASS
-   ========================================================== */
-
-.glass-card {
-
-    position: relative;
-
-    overflow: hidden;
-
-    background: var(--glass-bg);
-
-    border: var(--border-light);
-
-    border-radius: var(--radius-lg);
-
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-
-    box-shadow: var(--shadow-sm);
-
-    transition: var(--transition);
-
-}
-
-.glass-card:hover {
-
-    background: var(--glass-bg-hover);
-
-    border-color: var(--glass-highlight);
-
-    transform: translateY(-4px);
+    color: var(--color-text-secondary);
 
 }
 
 /* ==========================================================
-   BUTTONS
+   BACKGROUND GLOW
    ========================================================== */
 
-.button {
+body::before {
 
-    display: inline-flex;
+    content: "";
 
-    align-items: center;
-    justify-content: center;
+    position: fixed;
 
-    gap: .75rem;
-
-    min-width: 170px;
-
-    padding: 15px 28px;
-
-    border-radius: var(--radius-pill);
-
-    transition: var(--transition);
-
-    font-weight: 600;
-
-}
-
-.button.primary {
-
-    color: white;
+    inset: 0;
 
     background:
-        linear-gradient(
-            135deg,
-            var(--aurora-blue),
-            var(--aurora-purple)
+
+        radial-gradient(
+
+            circle at top,
+
+            rgba(124,92,255,.12),
+
+            transparent 35%
+
+        ),
+
+        radial-gradient(
+
+            circle at bottom right,
+
+            rgba(71,138,255,.08),
+
+            transparent 30%
+
         );
 
-    box-shadow:
-        0 12px 35px rgba(78,125,255,.35);
+    pointer-events: none;
 
-}
-
-.button.primary:hover {
-
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 22px 60px rgba(78,125,255,.45);
-
-}
-
-.button.secondary {
-
-    background:
-        rgba(255,255,255,.04);
-
-    border:
-        var(--border-light);
-
-}
-
-.button.secondary:hover {
-
-    background:
-        rgba(255,255,255,.08);
+    z-index: -2;
 
 }
 
 /* ==========================================================
-   UTILITIES
+   NOISE
    ========================================================== */
 
-.hidden {
-    display: none !important;
-}
+body::after {
 
-.text-center {
-    text-align: center;
-}
+    content: "";
 
-.w-full {
-    width: 100%;
-}
+    position: fixed;
 
-.fade {
-    opacity: 0;
-}
+    inset: 0;
 
-.visible {
-    opacity: 1;
+    opacity: .015;
+
+    pointer-events: none;
+
+    background-image:
+
+        radial-gradient(
+
+            rgba(255,255,255,.45) .4px,
+
+            transparent .5px
+
+        );
+
+    background-size: 12px 12px;
+
+    z-index: -1;
+
 }
 
 /* ==========================================================
@@ -382,34 +293,30 @@ p {
    ========================================================== */
 
 :focus-visible {
-    outline: 2px solid var(--aurora-cyan);
-    outline-offset: 4px;
+
+    outline: 2px solid var(--color-primary);
+
+    outline-offset: 3px;
+
 }
 
 /* ==========================================================
-   HR
+   TRANSITIONS
    ========================================================== */
 
-hr {
-    border: none;
-    height: 1px;
-    background: var(--color-border);
-}
+button,
+a {
 
-/* ==========================================================
-   REDUCED MOTION
-   ========================================================== */
+    transition:
 
-@media (prefers-reduced-motion: reduce) {
+        background var(--transition-normal),
 
-    *,
-    *::before,
-    *::after {
+        color var(--transition-normal),
 
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
+        border-color var(--transition-normal),
 
-    }
+        transform var(--transition-normal),
+
+        opacity var(--transition-normal);
 
 }
