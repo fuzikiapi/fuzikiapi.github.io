@@ -158,7 +158,7 @@
 
     async function buildIntro() {
 
-        DOM.enter.style.display = "none";
+        DOM.enter.classList.remove("show");
 
         for (const item of DOM.items) {
 
