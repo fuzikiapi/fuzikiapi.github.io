@@ -337,3 +337,83 @@
         }, 700);
 
     }
+
+     /* ======================================================
+       MODALS
+       ====================================================== */
+
+    function openModal(event) {
+
+        const modalName =
+            event.currentTarget.dataset.modal;
+
+        closeModals();
+
+        const modal =
+            document.getElementById(
+                modalName + "Modal"
+            );
+
+        if (!modal) return;
+
+        modal.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+    function closeModals() {
+
+        DOM.modals.forEach((modal) => {
+
+            modal.classList.remove("active");
+
+        });
+
+        document.body.style.overflow = "";
+
+    }
+
+    /* ======================================================
+       CLOCK
+       ====================================================== */
+
+    function startClock() {
+
+        updateClock();
+
+        setInterval(updateClock, 1000);
+
+    }
+
+    function updateClock() {
+
+        const now = new Date();
+
+        const formatter =
+            new Intl.DateTimeFormat(
+
+                "pt-BR",
+
+                {
+
+                    hour: "2-digit",
+
+                    minute: "2-digit",
+
+                    second: "2-digit",
+
+                    timeZone:
+                        "America/Sao_Paulo"
+
+                }
+
+            );
+
+        DOM.clock.textContent =
+            "UTC-3 " +
+            formatter.format(now);
+
+    }
+
+})();
