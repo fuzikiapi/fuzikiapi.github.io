@@ -300,8 +300,11 @@
 
             DOM.app.hidden = false;
 
-            DOM.app.animate(
+document
+    .querySelector(".hero")
+    ?.classList.add("show");
 
+DOM.app.animate(
                 [
 
                     {
