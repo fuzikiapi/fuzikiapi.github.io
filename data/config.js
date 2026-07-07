@@ -4,7 +4,7 @@ window.CONFIG = {
 
         name: "Kadu Fuziki",
 
-        tagline: "Creating digital experiences.",
+        tagline: "Criando experiências digitais",
 
         avatar: "assets/images/avatar/avatar.png"
 
@@ -12,33 +12,33 @@ window.CONFIG = {
 
     socials: {
 
-        github: "",
+        github: "fuzikiapi",
 
-        instagram: "",
+        instagram: "kadufuziki",
 
-        discord: "",
+        discord: "kadufuziki",
 
-        riot: "",
+        riot: "kobizera",
 
-        youtube: "",
+        youtube: "kadufuziki",
 
-        spotify: "",
+        spotify: "31uf5xiryuu3wl5p3hum7pyz54le",
 
-        email: ""
+        email: "contatokadufuziki@gmail.com"
 
     },
 
     github: {
 
-        username: ""
+        username: "fuzikiapi"
 
     },
 
     discord: {
 
-        userId: "",
+        userId: "kadufuziki",
 
-        serverInvite: ""
+        serverInvite: "https://discord.gg/Xte6sC2Xep"
 
     },
 
