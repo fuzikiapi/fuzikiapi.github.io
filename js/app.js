@@ -499,55 +499,5 @@ DOM.app.animate(
    ====================================================== */
 
 lucide.createIcons();
-
-   /* ==========================================================
-   PROJECT CARD
-   ========================================================== */
-
-.project-card {
-
-    padding: 24px;
-
-    margin-top: 18px;
-
-    border-radius: 18px;
-
-    background:
-
-        rgba(255,255,255,.03);
-
-    border:
-
-        1px solid rgba(255,255,255,.05);
-
-}
-
-.project-card img {
-
-    width: 100%;
-
-    border-radius: 12px;
-
-    margin-bottom: 18px;
-
-}
-
-.project-card h3 {
-
-    margin-bottom: 8px;
-
-}
-
-.project-card p {
-
-    margin-bottom: 12px;
-
-}
-
-.project-card small {
-
-    color: var(--color-primary);
-
-}
    
 })();
