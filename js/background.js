@@ -17,9 +17,9 @@
 
         blobCount: 6,
 
-        blur: 160,
+        blur: 20,
 
-        opacity: 0.22,
+        opacity: 1,
 
         speed: 0.18,
 
