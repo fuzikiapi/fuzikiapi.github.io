@@ -1,11 +1,14 @@
 /* ==========================================================
    KF Platform
-   Background
-   Parte 1
+   Background Engine
    ========================================================== */
 
 (() => {
     "use strict";
+
+    if (!window.KF) {
+        throw new Error("KF Core não foi carregado.");
+    }
 
     /* ======================================================
        CONFIG
@@ -15,77 +18,94 @@
 
         pixelRatio: Math.min(window.devicePixelRatio || 1, 2),
 
-        blobCount: 6,
+        blobCount: 7,
 
-        blur: 20,
+        blur: 140,
 
-        opacity: 1,
+        opacity: 0.28,
 
-        speed: 0.18,
+        speed: 0.15,
 
         colors: [
-            "#4E7DFF",
+
+            "#4F7DFB",
+
             "#6EE7F7",
+
             "#8B5CF6",
-            "#6D4AFF",
-            "#D946EF"
+
+            "#A855F7",
+
+            "#3B82F6"
+
         ]
 
     };
 
     /* ======================================================
-       CANVAS
+       STATE
        ====================================================== */
 
-    const canvas = document.getElementById("aurora-canvas");
+    let initialized = false;
 
-    if (!canvas) return;
+    let running = false;
 
-    const ctx = canvas.getContext("2d", {
-        alpha: true,
-        desynchronized: true
-    });
-
-   const blurCanvas = document.createElement("canvas");
-
-const blurCtx = blurCanvas.getContext("2d", {
-    alpha: true,
-    desynchronized: true
-});
+    let rafId = null;
 
     let width = 0;
+
     let height = 0;
 
     let time = 0;
+
+    let lastFrame = performance.now();
+
+    /* ======================================================
+       CANVAS
+       ====================================================== */
+
+    const canvas =
+        document.getElementById(
+            "aurora-canvas"
+        );
+
+    if (!canvas) {
+
+        console.warn(
+            "Aurora canvas não encontrado."
+        );
+
+        return;
+
+    }
+
+    const ctx =
+        canvas.getContext(
+            "2d",
+            {
+                alpha: true
+            }
+        );
 
     /* ======================================================
        HELPERS
        ====================================================== */
 
-    const random = (min, max) =>
-        Math.random() * (max - min) + min;
+    function random(min, max) {
 
-    const lerp = (a, b, t) =>
-        a + (b - a) * t;
+        return Math.random() * (max - min) + min;
 
-    const clamp = (v, min, max) =>
-        Math.min(max, Math.max(min, v));
+    }
 
-    /* ======================================================
-       SIMPLE NOISE
-       ====================================================== */
+    function clamp(value, min, max) {
 
-    function noise(x, y, t) {
+        return Math.min(
 
-        return (
+            max,
 
-            Math.sin(x * 0.0019 + t) *
+            Math.max(min, value)
 
-            Math.cos(y * 0.0014 - t * .7) +
-
-            Math.sin((x + y) * 0.0008 + t * .35)
-
-        ) * .5;
+        );
 
     }
 
@@ -96,39 +116,40 @@ const blurCtx = blurCanvas.getContext("2d", {
     function resize() {
 
         width = window.innerWidth;
+
         height = window.innerHeight;
 
-        canvas.width = width * CONFIG.pixelRatio;
-        canvas.height = height * CONFIG.pixelRatio;
-        blurCanvas.width = canvas.width;
-        blurCanvas.height = canvas.height;
+        canvas.width =
+            width *
+            CONFIG.pixelRatio;
 
-blurCtx.setTransform(
-    CONFIG.pixelRatio,
-    0,
-    0,
-    CONFIG.pixelRatio,
-    0,
-    0
-);
+        canvas.height =
+            height *
+            CONFIG.pixelRatio;
 
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
+        canvas.style.width =
+            width + "px";
+
+        canvas.style.height =
+            height + "px";
 
         ctx.setTransform(
+
             CONFIG.pixelRatio,
+
             0,
+
             0,
+
             CONFIG.pixelRatio,
+
             0,
+
             0
+
         );
 
     }
-
-    window.addEventListener("resize", resize);
-
-    resize();
 
     /* ======================================================
        BLOB
@@ -136,74 +157,46 @@ blurCtx.setTransform(
 
     class Blob {
 
-        constructor(index) {
+        constructor() {
 
-            this.index = index;
+            this.radius = random(220, 420);
 
-            this.reset();
+            this.x = random(0, width);
 
-        }
+            this.y = random(0, height);
 
-        reset() {
+            this.speed = random(0.08, 0.20);
 
-            this.radius =
-                random(
-                    Math.min(width, height) * .18,
-                    Math.min(width, height) * .34
-                );
+            this.offset = random(0, 100);
 
-            this.x =
-                random(0, width);
-
-            this.y =
-                random(0, height);
-
-            this.offset =
-                random(0, 1000);
-
-            this.speed =
-                random(.3, 1.2);
-
-            this.amplitude =
-                random(40, 140);
-
-            this.color =
-                CONFIG.colors[
-                    Math.floor(
-                        random(
-                            0,
-                            CONFIG.colors.length
-                        )
+            this.color = CONFIG.colors[
+                Math.floor(
+                    random(
+                        0,
+                        CONFIG.colors.length
                     )
-                ];
+                )
+            ];
 
         }
 
         update(dt) {
 
-            const n = noise(
-                this.x,
-                this.y,
-                time * .2 + this.offset
-            );
-
             this.x +=
                 Math.cos(
-                    time * this.speed + this.offset
+                    time * this.speed +
+                    this.offset
                 ) *
-                CONFIG.speed *
-                this.amplitude *
                 dt *
-                .05;
+                0.18;
 
             this.y +=
                 Math.sin(
-                    time * this.speed + this.offset + n
+                    time * this.speed +
+                    this.offset
                 ) *
-                CONFIG.speed *
-                this.amplitude *
                 dt *
-                .05;
+                0.18;
 
             if (this.x < -this.radius)
                 this.x = width + this.radius;
@@ -219,46 +212,75 @@ blurCtx.setTransform(
 
         }
 
-        draw(context) {
+        draw() {
 
             const gradient =
-                context.createRadialGradient(
+                ctx.createRadialGradient(
+
                     this.x,
+
                     this.y,
+
                     0,
+
                     this.x,
+
                     this.y,
+
                     this.radius
+
                 );
 
             gradient.addColorStop(
+
                 0,
+
                 this.color
+
             );
 
             gradient.addColorStop(
-                .45,
+
+                .4,
+
                 this.color + "66"
+
             );
 
             gradient.addColorStop(
+
                 1,
+
                 this.color + "00"
+
             );
 
-            context.fillStyle = gradient;
+            ctx.globalAlpha =
+                CONFIG.opacity;
 
-            context.beginPath();
+            ctx.filter =
+                `blur(${CONFIG.blur}px)`;
 
-            context.arc(
+            ctx.fillStyle =
+                gradient;
+
+            ctx.beginPath();
+
+            ctx.arc(
+
                 this.x,
+
                 this.y,
+
                 this.radius,
+
                 0,
+
                 Math.PI * 2
+
             );
 
-            context.fill();
+            ctx.fill();
 
         }
 
@@ -270,139 +292,164 @@ blurCtx.setTransform(
 
     const blobs = [];
 
-    for (let i = 0; i < CONFIG.blobCount; i++) {
+    function createScene() {
 
-        blobs.push(new Blob(i));
+        blobs.length = 0;
+
+        for (
+            let i = 0;
+            i < CONFIG.blobCount;
+            i++
+        ) {
+
+            blobs.push(
+                new Blob()
+            );
+
+        }
 
     }
 
-    /* ======================================================
+     /* ======================================================
        BACKGROUND
        ====================================================== */
 
     function drawBackground() {
 
-        const background =
-            ctx.createLinearGradient(
-                0,
-                0,
-                0,
-                height
-            );
+        ctx.filter = "none";
 
-        background.addColorStop(
-            0,
-            "#040406"
-        );
-
-        background.addColorStop(
-            .45,
-            "#07070a"
-        );
-
-        background.addColorStop(
-            1,
-            "#050507"
-        );
-
-        ctx.globalCompositeOperation = "source-over";
         ctx.globalAlpha = 1;
 
-        ctx.fillStyle = background;
-
-        ctx.fillRect(
-            0,
-            0,
-            width,
-            height
-        );
-
-    }
-
-    /* ======================================================
-       BLOBS
-       ====================================================== */
-
-    function drawBlobs() {
-
-    blurCtx.clearRect(
-        0,
-        0,
-        width,
-        height
-    );
-
-    blurCtx.save();
-
-    blurCtx.filter = `blur(${CONFIG.blur}px)`;
-
-    blurCtx.globalCompositeOperation = "screen";
-
-    blurCtx.globalAlpha = 1;
-
-    for (const blob of blobs) {
-
-        blob.draw(blurCtx);
-
-    }
-
-    blurCtx.restore();
-
-    ctx.drawImage(
-        blurCanvas,
-        0,
-        0,
-        width,
-        height
-    );
-
-}
-
-    /* ======================================================
-       LIGHT
-       ====================================================== */
-
-    function drawAmbientLight() {
+        ctx.globalCompositeOperation =
+            "source-over";
 
         const gradient =
-            ctx.createRadialGradient(
-                width * .5,
-                height * .2,
+            ctx.createLinearGradient(
+
                 0,
-                width * .5,
-                height * .2,
-                Math.max(width, height)
+
+                0,
+
+                0,
+
+                height
+
             );
 
         gradient.addColorStop(
+
             0,
-            "rgba(255,255,255,.05)"
+
+            "#040406"
+
         );
 
         gradient.addColorStop(
-            .35,
-            "rgba(110,231,247,.03)"
+
+            .45,
+
+            "#07070A"
+
         );
 
         gradient.addColorStop(
-            .75,
-            "rgba(78,125,255,.015)"
-        );
 
-        gradient.addColorStop(
             1,
-            "rgba(0,0,0,0)"
-        );
 
-        ctx.globalCompositeOperation = "screen";
+            "#050507"
+
+        );
 
         ctx.fillStyle = gradient;
 
         ctx.fillRect(
+
             0,
+
             0,
+
             width,
+
             height
+
+        );
+
+    }
+
+    /* ======================================================
+       AMBIENT LIGHT
+       ====================================================== */
+
+    function drawAmbientLight() {
+
+        ctx.globalCompositeOperation =
+            "screen";
+
+        ctx.filter = "none";
+
+        ctx.globalAlpha = .08;
+
+        const light =
+            ctx.createRadialGradient(
+
+                width * .5,
+
+                height * .2,
+
+                0,
+
+                width * .5,
+
+                height * .2,
+
+                Math.max(width, height)
+
+            );
+
+        light.addColorStop(
+
+            0,
+
+            "rgba(255,255,255,.35)"
+
+        );
+
+        light.addColorStop(
+
+            .25,
+
+            "rgba(110,231,247,.10)"
+
+        );
+
+        light.addColorStop(
+
+            .60,
+
+            "rgba(139,92,246,.05)"
+
+        );
+
+        light.addColorStop(
+
+            1,
+
+            "rgba(0,0,0,0)"
+
+        );
+
+        ctx.fillStyle = light;
+
+        ctx.fillRect(
+
+            0,
+
+            0,
+
+            width,
+
+            height
+
         );
 
     }
@@ -413,43 +460,66 @@ blurCtx.setTransform(
 
     function drawVignette() {
 
+        ctx.filter = "none";
+
+        ctx.globalCompositeOperation =
+            "multiply";
+
+        ctx.globalAlpha = 1;
+
         const vignette =
             ctx.createRadialGradient(
 
                 width * .5,
+
                 height * .5,
-                Math.min(width, height) * .28,
+
+                Math.min(width, height) * .25,
 
                 width * .5,
+
                 height * .5,
+
                 Math.max(width, height) * .75
 
             );
 
         vignette.addColorStop(
+
             0,
+
             "rgba(0,0,0,0)"
+
         );
 
         vignette.addColorStop(
-            .82,
+
+            .75,
+
             "rgba(0,0,0,.08)"
+
         );
 
         vignette.addColorStop(
-            1,
-            "rgba(0,0,0,.22)"
-        );
 
-        ctx.globalCompositeOperation = "multiply";
+            1,
+
+            "rgba(0,0,0,.22)"
+
+        );
 
         ctx.fillStyle = vignette;
 
         ctx.fillRect(
+
             0,
+
             0,
+
             width,
+
             height
+
         );
 
     }
@@ -459,6 +529,8 @@ blurCtx.setTransform(
        ====================================================== */
 
     function update(delta) {
+
+        time += delta * 0.001;
 
         for (const blob of blobs) {
 
@@ -474,9 +546,28 @@ blurCtx.setTransform(
 
     function render() {
 
+        ctx.clearRect(
+
+            0,
+
+            0,
+
+            width,
+
+            height
+
+        );
+
         drawBackground();
 
-        drawBlobs();
+        ctx.globalCompositeOperation =
+            "screen";
+
+        for (const blob of blobs) {
+
+            blob.draw();
+
+        }
 
         drawAmbientLight();
 
@@ -485,225 +576,227 @@ blurCtx.setTransform(
     }
 
     /* ======================================================
-       FPS CLOCK
+       LOOP
        ====================================================== */
 
-    let previousTime =
-        performance.now();
+    function frame(now) {
 
-   let rafId = null;
-   
-function frame(now) {
+        if (!running) return;
 
-    console.log("Frame");
+        const delta = clamp(
 
-    if (!running) {
+            now - lastFrame,
 
-        return;
-
-    }
-
-    const delta =
-        clamp(
-            (now - previousTime) / 16.666,
             0,
-            2
+
+            40
+
         );
 
-    previousTime = now;
+        lastFrame = now;
 
-    time +=
-        delta * 0.01;
+        update(delta);
 
-    update(delta);
+        render();
 
-    render();
-
-    rafId = requestAnimationFrame(frame);
-
-}
-
-     /* ======================================================
-       VISIBILITY CONTROL
-       ====================================================== */
-
-    let running = false;
-
-function start() {
-
-    console.log("Background start");
-
-    if (running) return;
-
-    running = true;
-
-    previousTime = performance.now();
-
-    rafId = requestAnimationFrame(frame);
-
-}
-   
-    function stop() {
-
-    running = false;
-
-    if (rafId !== null) {
-
-        cancelAnimationFrame(rafId);
-
-        rafId = null;
+        rafId =
+            requestAnimationFrame(frame);
 
     }
 
-}
+    function start() {
 
-    /* ======================================================
-       PAGE VISIBILITY
-       ====================================================== */
+        if (running) return;
 
-    document.addEventListener(
-        "visibilitychange",
-        () => {
+        running = true;
 
-            if (document.hidden) {
+        lastFrame = performance.now();
 
-                stop();
+        rafId =
+            requestAnimationFrame(frame);
 
-            } else {
+    }
 
-                start();
+    function stop() {
 
-            }
+        running = false;
 
-        },
-        { passive: true }
-    );
+        if (rafId !== null) {
 
-    /* ======================================================
-       CANVAS CONTEXT EVENTS
-       ====================================================== */
+            cancelAnimationFrame(rafId);
 
-    canvas.addEventListener(
-        "contextlost",
-        (event) => {
-
-            event.preventDefault();
-
-            stop();
-
-        },
-        false
-    );
-
-    canvas.addEventListener(
-        "contextrestored",
-        () => {
-
-            resize();
-
-            start();
-
-        },
-        false
-    );
-
-    /* ======================================================
-       COLOR REFRESH
-       ====================================================== */
-
-    function randomizePalette() {
-
-        for (const blob of blobs) {
-
-            blob.color =
-                CONFIG.colors[
-                    Math.floor(
-                        random(
-                            0,
-                            CONFIG.colors.length
-                        )
-                    )
-                ];
+            rafId = null;
 
         }
 
     }
 
-    const paletteInterval = setInterval(
-    randomizePalette,
-    45000
-);
-
-    /* ======================================================
-       WINDOW FOCUS
+     /* ======================================================
+       EVENTS
        ====================================================== */
 
-    window.addEventListener(
-        "focus",
-        () => {
+    function onResize() {
 
-            start();
+        resize();
 
-        },
-        { passive: true }
-    );
+    }
 
-    window.addEventListener(
-        "blur",
-        () => {
+    function onVisibilityChange() {
+
+        if (document.hidden) {
 
             stop();
 
-        },
-        { passive: true }
-    );
+        } else {
+
+            start();
+
+        }
+
+    }
+
+    function bindEvents() {
+
+        window.addEventListener(
+
+            "resize",
+
+            onResize,
+
+            { passive: true }
+
+        );
+
+        document.addEventListener(
+
+            "visibilitychange",
+
+            onVisibilityChange,
+
+            { passive: true }
+
+        );
+
+        window.addEventListener(
+
+            "focus",
+
+            start,
+
+            { passive: true }
+
+        );
+
+        window.addEventListener(
+
+            "blur",
+
+            stop,
+
+            { passive: true }
+
+        );
+
+    }
+
+    function unbindEvents() {
+
+        window.removeEventListener(
+
+            "resize",
+
+            onResize
+
+        );
+
+        document.removeEventListener(
+
+            "visibilitychange",
+
+            onVisibilityChange
+
+        );
+
+        window.removeEventListener(
+
+            "focus",
+
+            start
+
+        );
+
+        window.removeEventListener(
+
+            "blur",
+
+            stop
+
+        );
+
+    }
 
     /* ======================================================
-       INITIALIZATION
+       INIT
        ====================================================== */
 
-let initialized = false;
+    function init() {
 
-window.KF.Background = {
+        if (initialized) return;
 
-    get initialized() {
+        initialized = true;
 
-        return initialized;
+        resize();
 
-    },
+        createScene();
 
-    init() {
+        bindEvents();
 
-    console.log("Background init");
+        render();
 
-    if (initialized) return;
+        start();
 
-    initialized = true;
+    }
 
-    running = false;
+    /* ======================================================
+       DESTROY
+       ====================================================== */
 
-    resize();
-
-    start();
-
-},
-
-    start,
-
-    stop,
-
-    resize,
-
-    destroy() {
+    function destroy() {
 
         if (!initialized) return;
 
         stop();
 
+        unbindEvents();
+
+        blobs.length = 0;
+
         initialized = false;
 
     }
 
-};
+    /* ======================================================
+       PUBLIC API
+       ====================================================== */
+
+    window.KF.Background = {
+
+        get initialized() {
+
+            return initialized;
+
+        },
+
+        init,
+
+        destroy,
+
+        start,
+
+        stop,
+
+        resize
+
+    };
 
 })();
