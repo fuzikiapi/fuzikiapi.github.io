@@ -493,7 +493,9 @@ blurCtx.setTransform(
 
    let rafId = null;
    
-    function frame(now) {
+function frame(now) {
+
+    console.log("Frame");
 
     if (!running) {
 
@@ -527,7 +529,9 @@ blurCtx.setTransform(
 
     let running = false;
 
-    function start() {
+function start() {
+
+    console.log("Background start");
 
     if (running) return;
 
