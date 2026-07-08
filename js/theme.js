@@ -6,47 +6,55 @@
 (() => {
     "use strict";
 
-    const STORAGE_KEY = "kf-theme";
+    const STORAGE = "kf-theme";
 
-    let currentTheme = "dark";
+    let button;
+
+    let current = "dark";
 
     function init() {
 
-        const savedTheme =
+        button = document.getElementById(
 
-            localStorage.getItem(
+            "themeToggle"
 
-                STORAGE_KEY
+        );
 
-            );
+        current =
 
-        if (savedTheme) {
+            localStorage.getItem(STORAGE)
 
-            currentTheme = savedTheme;
+            || "dark";
 
-        }
+        apply(current);
 
-        apply(currentTheme);
+        button?.addEventListener(
+
+            "click",
+
+            toggle
+
+        );
 
     }
 
     function toggle() {
 
-        currentTheme =
+        current =
 
-            currentTheme === "dark"
+            current === "dark"
 
-                ? "light"
+            ? "light"
 
-                : "dark";
+            : "dark";
 
-        apply(currentTheme);
+        apply(current);
 
         localStorage.setItem(
 
-            STORAGE_KEY,
+            STORAGE,
 
-            currentTheme
+            current
 
         );
 
@@ -58,11 +66,15 @@
 
             theme;
 
-    }
+        if (!button) return;
 
-    function getTheme() {
+        button.textContent =
 
-        return currentTheme;
+            theme === "dark"
+
+            ? "🌙"
+
+            : "☀️";
 
     }
 
@@ -70,11 +82,7 @@
 
         init,
 
-        toggle,
-
-        apply,
-
-        getTheme
+        toggle
 
     };
 
