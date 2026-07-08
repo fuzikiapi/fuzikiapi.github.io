@@ -675,3 +675,43 @@
     background: var(--color-surface-hover);
 
 }
+
+/* ==========================================================
+   DISCORD STATUS
+   ========================================================== */
+
+.status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.status-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+}
+
+.status-info span {
+
+    font-size: .95rem;
+
+    font-weight: 600;
+
+}
+
+.status-info small {
+
+    font-size: .75rem;
+
+    color: var(--color-text-secondary);
+
+}
