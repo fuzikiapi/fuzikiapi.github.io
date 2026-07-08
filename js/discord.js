@@ -7,34 +7,81 @@
     "use strict";
 
     let statusElement;
-
     let statusDot;
 
-    function init() {
+    async function init() {
 
-        statusElement = document.getElementById(
+        statusElement =
+            document.getElementById("discordStatus");
 
-            "discordStatus"
+        statusDot =
+            statusElement?.querySelector(".status-dot");
 
-        );
+        if (!CONFIG.discord.lanyardId) {
 
-        statusDot = statusElement?.querySelector(
+            updateOffline();
 
-            ".status-dot"
+            return;
 
-        );
+        }
 
-        updateOffline();
+        await update();
+
+        setInterval(update, 30000);
+
+    }
+
+    async function update() {
+
+        try {
+
+            const response = await fetch(
+
+                `https://api.lanyard.rest/v1/users/${CONFIG.discord.lanyardId}`
+
+            );
+
+            const json = await response.json();
+
+            if (!json.success) {
+
+                updateOffline();
+
+                return;
+
+            }
+
+            const data = json.data;
+
+            if (data.discord_status === "offline") {
+
+                updateOffline();
+
+            } else {
+
+                updateOnline(data.discord_status);
+
+            }
+
+        }
+
+        catch {
+
+            updateOffline();
+
+        }
 
     }
 
     function updateOffline() {
 
-        if (!statusElement) return;
+        statusElement.lastChild.textContent =
 
-        statusElement.lastChild.textContent = " Offline";
+            " Offline";
 
-        statusDot.style.background = "#ef4444";
+        statusDot.style.background =
+
+            "#ef4444";
 
         statusDot.style.boxShadow =
 
@@ -42,13 +89,17 @@
 
     }
 
-    function updateOnline() {
+    function updateOnline(status) {
 
-        if (!statusElement) return;
+        statusElement.lastChild.textContent =
 
-        statusElement.lastChild.textContent = " Online";
+            " " +
 
-        statusDot.style.background = "#22c55e";
+            capitalize(status);
+
+        statusDot.style.background =
+
+            "#22c55e";
 
         statusDot.style.boxShadow =
 
@@ -56,13 +107,17 @@
 
     }
 
+    function capitalize(text) {
+
+        return text.charAt(0).toUpperCase()
+
+            + text.slice(1);
+
+    }
+
     KF.Discord = {
 
-        init,
-
-        updateOffline,
-
-        updateOnline
+        init
 
     };
 
