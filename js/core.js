@@ -12,39 +12,20 @@
 
         version: "2.0.0",
 
-        config: {
+        Config: {},
 
-            timezone: "America/Sao_Paulo",
+        Intro: {},
 
-            language: "pt-BR"
+        Profile: {},
 
-        },
+        Projects: {},
 
-        state: {
+        Modals: {},
 
-            introFinished: false,
+        Clock: {},
 
-            theme: "dark"
-
-        },
-
-        elements: {},
-
-        utils: {}
+        Icons: {}
 
     };
-
-    /* ======================================================
-       HELPERS
-       ====================================================== */
-
-    window.KF.utils.select = (selector) =>
-        document.querySelector(selector);
-
-    window.KF.utils.selectAll = (selector) =>
-        document.querySelectorAll(selector);
-
-    window.KF.utils.pad = (value) =>
-        String(value).padStart(2, "0");
 
 })();
