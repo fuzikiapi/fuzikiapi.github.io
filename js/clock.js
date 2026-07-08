@@ -54,11 +54,13 @@
 
         );
 
-        clock.textContent =
+       clock.textContent =
 
-            "UTC−3 " +
+    CONFIG.utcLabel +
 
-            formatter.format(now);
+    " " +
+
+    formatter.format(now);
 
     }
 
