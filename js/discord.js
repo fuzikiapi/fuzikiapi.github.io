@@ -77,37 +77,89 @@
 
     function updateOffline() {
 
-        statusElement.lastChild.textContent =
+    presenceElement.textContent =
 
-            " Offline";
+        "Offline";
 
-        statusDot.style.background =
+    activityElement.textContent =
 
-            "#ef4444";
+        "Desconectado";
 
-        statusDot.style.boxShadow =
+    statusDot.style.background =
 
-            "0 0 12px #ef4444";
+        "#ef4444";
+
+    statusDot.style.boxShadow =
+
+        "0 0 12px #ef4444";
+
+}
+   
+    function updateOnline(status, data) {
+
+    presenceElement.textContent =
+
+        capitalize(status);
+
+    statusDot.style.background =
+
+        "#22c55e";
+
+    statusDot.style.boxShadow =
+
+        "0 0 12px #22c55e";
+
+    if (data.spotify) {
+
+        activityElement.textContent =
+
+            "🎵 " +
+
+            data.spotify.song;
+
+        return;
 
     }
 
-    function updateOnline(status) {
+    if (
 
-        statusElement.lastChild.textContent =
+        data.activities
 
-            " " +
+            ?.length
 
-            capitalize(status);
+    ) {
 
-        statusDot.style.background =
+        activityElement.textContent =
 
-            "#22c55e";
+            "🎮 " +
 
-        statusDot.style.boxShadow =
+            data.activities[0].name;
 
-            "0 0 12px #22c55e";
+        return;
 
     }
+
+    activityElement.textContent =
+
+        "Online";
+
+}
+
+   presenceElement =
+
+    document.getElementById(
+
+        "discordPresence"
+
+    );
+
+activityElement =
+
+    document.getElementById(
+
+        "discordActivity"
+
+    );
 
     function capitalize(text) {
 
