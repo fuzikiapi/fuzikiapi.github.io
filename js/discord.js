@@ -8,6 +8,8 @@
 
     let statusElement;
     let statusDot;
+    let presenceElement;
+    let activityElement;
 
     async function init() {
 
