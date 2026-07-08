@@ -163,3 +163,35 @@
     --header-height: 80px;
 
 }
+
+/* ==========================================================
+   LIGHT THEME
+   ========================================================== */
+
+[data-theme="light"] {
+
+    --color-background: #f4f5f7;
+
+    --color-surface: rgba(255,255,255,.75);
+
+    --color-surface-hover: rgba(255,255,255,.95);
+
+    --color-border: rgba(0,0,0,.08);
+
+    --color-border-hover: rgba(0,0,0,.16);
+
+    --color-text: #18181b;
+
+    --color-text-secondary: #52525b;
+
+    --gradient-background:
+
+        linear-gradient(
+
+            #f8f9fb,
+
+            #eef1f6
+
+        );
+
+}
