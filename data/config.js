@@ -40,7 +40,7 @@ window.CONFIG = {
 
         serverInvite: "https://discord.gg/Xte6sC2Xep",
 
-        lanyardId: ""
+        lanyardId: "489462862926839828"
 
     },
 
