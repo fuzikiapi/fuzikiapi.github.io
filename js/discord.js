@@ -61,7 +61,13 @@
 
             } else {
 
-                updateOnline(data.discord_status);
+                updateOnline(
+
+    data.discord_status,
+
+    data
+
+);
 
             }
 
