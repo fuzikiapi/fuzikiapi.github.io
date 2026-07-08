@@ -20,6 +20,8 @@
 
         KF.Icons.init();
 
+        KF.Theme.init();
+
         console.log("KF Platform iniciada.");
 
     }
