@@ -22,6 +22,8 @@
 
         KF.Theme.init();
 
+        KF.Discord.init();
+
         console.log("KF Platform iniciada.");
 
     }
