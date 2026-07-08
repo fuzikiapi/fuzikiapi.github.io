@@ -42,8 +42,10 @@ window.CONFIG = {
 
     },
 
-    language: "pt-BR",
+   language: "pt-BR",
 
-    timezone: "America/Sao_Paulo"
+timezone: "America/Sao_Paulo",
+
+utcLabel: "UTC−3"
 
 };
