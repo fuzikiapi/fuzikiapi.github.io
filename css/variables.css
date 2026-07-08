@@ -5,33 +5,35 @@
 
 :root {
 
-    /* ======================================================
-       COLORS
-       ====================================================== */
+/* ==========================================================
+   COLORS
+   ========================================================== */
 
-    --color-background: #0b0b0f;
+:root {
 
-    --color-surface: rgba(255, 255, 255, 0.04);
+    --color-primary: #7C5CFF;
 
-    --color-surface-hover: rgba(255, 255, 255, 0.08);
+    --color-primary-hover: #9277FF;
 
-    --color-border: rgba(255, 255, 255, 0.08);
+    --color-success: #22C55E;
 
-    --color-border-hover: rgba(255, 255, 255, 0.16);
+    --color-danger: #EF4444;
 
-    --color-text: #f7f7f8;
+    --color-background: #09090B;
 
-    --color-text-secondary: #9b9ba5;
+    --color-surface: rgba(255,255,255,.04);
 
-    --color-text-muted: #6d6d76;
+    --color-surface-hover: rgba(255,255,255,.06);
 
-    --color-primary: #7c5cff;
+    --color-border: rgba(255,255,255,.08);
 
-    --color-primary-light: #9b85ff;
+    --color-border-hover: rgba(255,255,255,.16);
 
-    --color-success: #22c55e;
+    --color-text: #F5F5F5;
 
-    --color-danger: #ef4444;
+    --color-text-secondary: #A1A1AA;
+
+}
 
     /* ======================================================
        GRADIENTS
