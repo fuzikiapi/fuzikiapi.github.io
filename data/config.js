@@ -38,7 +38,9 @@ window.CONFIG = {
 
         userId: "kadufuziki",
 
-        serverInvite: "https://discord.gg/Xte6sC2Xep"
+        serverInvite: "https://discord.gg/Xte6sC2Xep",
+
+        lanyardId: ""
 
     },
 
