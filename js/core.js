@@ -24,7 +24,7 @@
 
         Clock: {},
 
-        Icons: {}
+        Icons: {},
 
         Theme: {},
 
